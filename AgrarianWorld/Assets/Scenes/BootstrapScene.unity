@@ -273,6 +273,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameBootstrapper
       objectReference: {fileID: 0}
+    - target: {fileID: 442020983732966999, guid: b43b28b38843d99448e799e6e9ccb0fa,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8799144065745104798, guid: b43b28b38843d99448e799e6e9ccb0fa,
         type: 3}
       propertyPath: m_LocalPosition.x

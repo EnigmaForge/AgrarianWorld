@@ -13,7 +13,8 @@ namespace EntryPoint.StateMachine
         {
             States = new Dictionary<Type, IState>()
             {
-                [typeof(BootstrapState)] = new BootstrapState(this, new AsyncSceneLoader())
+                [typeof(BootstrapState)] = new BootstrapState(this, new AsyncSceneLoader()),
+                [typeof(GameState)] = new GameState(this)
             };
         }
 

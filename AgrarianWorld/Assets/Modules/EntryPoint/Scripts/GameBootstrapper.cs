@@ -11,8 +11,6 @@ namespace EntryPoint
         {
             _gameStateMachine = new GameStateMachine();
             _gameStateMachine.Enter<BootstrapState>();
-
-            DontDestroyOnLoad(this);
         }
     }
 }
