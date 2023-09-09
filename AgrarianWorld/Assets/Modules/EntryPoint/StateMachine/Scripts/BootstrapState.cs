@@ -33,24 +33,4 @@ namespace EntryPoint.StateMachine
             Debug.Log("Exit Bootstrap State");
         }
     }
-
-    public class GameState : IState
-    {
-        private IStateMachine _gameStateMachine;
-
-        public GameState(IStateMachine gameStateMachine)
-        {
-            _gameStateMachine = gameStateMachine;
-        }
-
-        public void Enter()
-        {
-            Debug.Log("Enter Game State");
-        }
-
-        public void Exit()
-        {
-            
-        }
-    }
 }
