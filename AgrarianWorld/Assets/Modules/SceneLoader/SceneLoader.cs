@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace EntryPoint.SceneLoader
+namespace SceneLoader
 {
     public class AsyncSceneLoader : ISceneLoader
     {

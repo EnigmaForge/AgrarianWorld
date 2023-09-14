@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace EntryPoint.SceneLoader
+namespace SceneLoader
 {
     public interface ISceneLoader
     {

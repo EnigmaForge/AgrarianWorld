@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace EntryPoint.StateMachine
+namespace StateMachine
 {
     public interface IStateMachine
     {

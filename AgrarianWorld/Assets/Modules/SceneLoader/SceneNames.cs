@@ -1,4 +1,4 @@
-﻿namespace EntryPoint.StateMachine
+﻿namespace SceneLoader
 {
     public static class SceneNames
     {
