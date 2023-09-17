@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using UnityEngine;
 using Zenject;
 
 namespace StateMachine
@@ -13,7 +12,7 @@ namespace StateMachine
         private IStateFactory _stateFactory;
 
         [Inject]
-        public void Construct(IStateFactory stateFactory)
+        public GameStateMachine(IStateFactory stateFactory)
         {
             _stateFactory = stateFactory;
         }
