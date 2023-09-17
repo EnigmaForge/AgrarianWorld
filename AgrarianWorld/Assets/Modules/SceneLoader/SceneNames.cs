@@ -2,7 +2,7 @@
 {
     public static class SceneNames
     {
-        public static string BOOTSTRAP_SCENE = "BootstrapScene";
-        public static string CORE_SCENE = "CoreScene";
+        public static string BOOT_SCENE = "BootScene";
+        public static string GAME_SCENE = "GameScene";
     }
 }

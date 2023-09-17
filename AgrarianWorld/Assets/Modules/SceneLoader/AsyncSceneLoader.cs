@@ -22,10 +22,17 @@ namespace SceneLoader
             };
         }
 
+        public void LoadSceneAdditive(string name, Action onLoaded = null)
+        {
+            AsyncOperation loadScene = SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
+            loadScene.completed += _ => onLoaded?.Invoke();
+        }
+
         public void UnloadScene(string name, Action onUnloaded = null)
         {
             AsyncOperation unloadScene = SceneManager.UnloadSceneAsync(name);
             unloadScene.completed += _ => onUnloaded?.Invoke();
+            CurrentScene = SceneManager.GetActiveScene().name;
         }
     }
 }
