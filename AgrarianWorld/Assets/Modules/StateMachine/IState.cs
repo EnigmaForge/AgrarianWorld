@@ -1,4 +1,4 @@
-﻿namespace EntryPoint.StateMachine
+﻿namespace StateMachine
 {
     public interface IState
     {

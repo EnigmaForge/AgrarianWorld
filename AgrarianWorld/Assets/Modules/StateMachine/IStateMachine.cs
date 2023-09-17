@@ -1,13 +1,13 @@
 using System;
 using System.Collections.Generic;
 
-namespace EntryPoint.StateMachine
+namespace StateMachine
 {
     public interface IStateMachine
     {
         public Dictionary<Type, IState> States { get; set; }
         public IState CurrentState { get; set; }
 
-        public void Enter<TState>() where TState : IState;
+        public void ChangeState<TState>() where TState : IState;
     }
 }
