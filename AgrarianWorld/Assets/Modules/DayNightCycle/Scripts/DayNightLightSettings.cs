@@ -1,10 +1,10 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets.Modules.DayNightCycle
+namespace DayNightCycle
 {
     [Serializable]
-    public class LightPresetSettings
+    public class DayNightLightSettings
     {
         [field: SerializeField] public Gradient AmbientColor { get; set; }
         [field: SerializeField] public Gradient DirectionalColor { get; set; }
