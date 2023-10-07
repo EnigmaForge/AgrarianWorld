@@ -5,8 +5,8 @@ namespace StateMachine
 {
     public class LoadGameSceneState : IState
     {
-        private IStateMachine _stateMachine;
-        private ISceneLoader _sceneLoader;
+        private readonly IStateMachine _stateMachine;
+        private readonly ISceneLoader _sceneLoader;
 
         [Inject]
         public LoadGameSceneState(IStateMachine stateMachine, ISceneLoader sceneLoader)
@@ -18,7 +18,7 @@ namespace StateMachine
         public void Enter() => 
             _sceneLoader.LoadScene(SceneNames.GAME_SCENE, ChangeState);
 
-        public void ChangeState() => 
+        private void ChangeState() => 
             _stateMachine.ChangeState<ActiveGameSceneState>();
 
         public void Exit() { }
