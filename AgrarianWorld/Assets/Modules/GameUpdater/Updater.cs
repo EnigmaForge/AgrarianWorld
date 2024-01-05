@@ -1,37 +1,25 @@
 ﻿using System;
 using UnityEngine;
 
-namespace GameUpdater
-{
-    public class Updater : MonoBehaviour, IUpdater
-    {
+namespace GameUpdater {
+    public class Updater : MonoBehaviour, IUpdater {
         public event Action OnUpdate;
         public event Action OnFixedUpdate;
         public event Action OnLateUpdate;
 
         public void Update() =>
-            UpdateAction();
-
-        public void FixedUpdate() =>
-            FixedUpdateAction();
-
-        public void LateUpdate() =>
-            LateUpdateAction();
-
-        private void OnDestroy() => 
-            Cleanup();
-
-        private void UpdateAction() =>
             OnUpdate?.Invoke();
 
-        private void FixedUpdateAction() =>
+        public void FixedUpdate() =>
             OnFixedUpdate?.Invoke();
 
-        private void LateUpdateAction() =>
+        public void LateUpdate() =>
             OnLateUpdate?.Invoke();
 
-        private void Cleanup()
-        {
+        private void OnDestroy() =>
+            Cleanup();
+
+        private void Cleanup() {
             OnUpdate = null;
             OnFixedUpdate = null;
             OnLateUpdate = null;
