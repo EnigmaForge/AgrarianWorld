@@ -17,8 +17,10 @@ namespace Core.EntryPoint {
 
         private void Start() {
             _gameStateMachine.ChangeState<InitializeState>();
-            
-            _sceneLoader.Load(SceneNames.GameScene, LoadSceneMode.Single, null, () => _gameStateMachine.ChangeState<GameMenuState>());
+            _sceneLoader.Load(SceneNames.MenuScene, LoadSceneMode.Single, null, ChangeGameStateToMenuState);
         }
+
+        private void ChangeGameStateToMenuState() =>
+            _gameStateMachine.ChangeState<GameMenuState>();
     }
 }

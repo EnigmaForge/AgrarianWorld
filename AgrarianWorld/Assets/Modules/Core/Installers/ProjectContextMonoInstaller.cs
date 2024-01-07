@@ -1,5 +1,6 @@
 using GameUpdater;
 using SceneLoaderModule;
+using StateMachine;
 using UnityEngine;
 using Zenject;
 
@@ -16,6 +17,10 @@ namespace Core.Installers {
 
             Container.Bind<ISceneLoader>()
                 .To<SceneLoader>()
+                .AsSingle()
+                .NonLazy();
+
+            Container.BindInterfacesAndSelfTo<GameStateMachine>()
                 .AsSingle()
                 .NonLazy();
         }

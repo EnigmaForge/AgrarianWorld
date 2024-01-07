@@ -1,6 +1,7 @@
 namespace SceneLoaderModule { 
     public enum SceneNames {
         InitialScene = 0,
-        GameScene = 1,
+        MenuScene = 1,
+        GameScene = 2,
     }
 }
