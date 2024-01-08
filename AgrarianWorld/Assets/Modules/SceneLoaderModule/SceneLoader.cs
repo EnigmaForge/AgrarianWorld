@@ -1,9 +1,21 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 namespace SceneLoaderModule {
-    public class SceneLoader : ISceneLoader {
+    public class SceneLoader : ISceneLoader, IInitializable {
+        public void Initialize() =>
+            LoadInitialScene();
+
+        private void LoadInitialScene() {
+            if (IsInitialScene() is false)
+                Load(SceneNames.InitialScene);
+        }
+
+        private bool IsInitialScene() =>
+            SceneManager.GetActiveScene().name == SceneNames.InitialScene.ToString();
+
         public void Load(SceneNames sceneName, LoadSceneMode loadSceneMode = LoadSceneMode.Single, Action onStart = null, Action onComplete = null) {
             onStart?.Invoke();
             AsyncOperation loadSceneOperation = SceneManager.LoadSceneAsync(sceneName.ToString(), loadSceneMode);

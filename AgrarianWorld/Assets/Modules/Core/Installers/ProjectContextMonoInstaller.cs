@@ -15,8 +15,7 @@ namespace Core.Installers {
                 .AsSingle()
                 .NonLazy();
 
-            Container.Bind<ISceneLoader>()
-                .To<SceneLoader>()
+            Container.BindInterfacesAndSelfTo<SceneLoader>()
                 .AsSingle()
                 .NonLazy();
 
