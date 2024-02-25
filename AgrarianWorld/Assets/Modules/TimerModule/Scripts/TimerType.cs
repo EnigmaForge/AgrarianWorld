@@ -1,6 +1,6 @@
 namespace TimerModule {
     public enum TimerType {
-        Simple = 0,
+        Default = 0,
         Unscaled = 1,
     }
 }

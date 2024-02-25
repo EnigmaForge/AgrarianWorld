@@ -3,7 +3,7 @@ using GameUpdatersModule;
 using UnityEngine;
 
 namespace TimerModule {
-    public class UnscaledTimer : ITimer {
+    public class DefaultTimer : ITimer {
         private readonly IGameUpdater _gameUpdater;
         private TimerStatus _timerStatus;
         public float Duration { get; set; }
@@ -14,7 +14,7 @@ namespace TimerModule {
         public event Action OnStop;
         public event Action OnKill;
 
-        public UnscaledTimer(IGameUpdater gameUpdater) =>
+        public DefaultTimer(IGameUpdater gameUpdater) =>
             _gameUpdater = gameUpdater;
 
         public void Start() {
