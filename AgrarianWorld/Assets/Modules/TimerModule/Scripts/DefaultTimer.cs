@@ -21,23 +21,26 @@ namespace TimerModule {
             LeftTime = Duration;
             _timersUpdater.OnUpdate += UpdateTimer;
             OnStart?.Invoke();
+            _timerStatus = TimerStatus.Running;
         }
 
         public void Pause() {
             _timersUpdater.OnUpdate -= UpdateTimer;
             OnPause?.Invoke();
+            _timerStatus = TimerStatus.Paused;
         }
 
         public void Stop() {
             LeftTime = 0;
             _timersUpdater.OnUpdate -= UpdateTimer;
             OnStop?.Invoke();
+            _timerStatus = TimerStatus.Stopped;
         }
 
         public void Kill() {
             Cleanup();
-            _timerStatus = TimerStatus.Killed;
             OnKill?.Invoke();
+            _timerStatus = TimerStatus.Killed;
         }
 
         public TimerStatus GetStatus() =>
