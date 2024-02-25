@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
-namespace Core.EntryPoint {
+namespace Bootstrap {
     public class GameInitializer : MonoBehaviour {
         private GameStateMachine _gameStateMachine;
         private ISceneLoader _sceneLoader;

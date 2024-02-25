@@ -1,17 +1,17 @@
 using System;
-using GameUpdater;
+using GameUpdatersModule;
 
 namespace TimerModule {
     public class TimersFactory : ITimersFactory {
-        private readonly IUpdater _updater;
+        private readonly IGameUpdater _gameUpdater;
 
-        public TimersFactory(IUpdater updater) =>
-            _updater = updater;
+        public TimersFactory(IGameUpdater gameUpdater) =>
+            _gameUpdater = gameUpdater;
 
         public ITimer Create(TimerConfiguration configuration) {
             switch (configuration.TimerType) {
                 case TimerType.Simple:
-                    SimpleTimer simpleTimer = new SimpleTimer(_updater) {
+                    SimpleTimer simpleTimer = new SimpleTimer(_gameUpdater) {
                         Duration = configuration.Duration
                     };
 
@@ -21,7 +21,7 @@ namespace TimerModule {
 
                     return simpleTimer;
                 case TimerType.Unscaled:
-                    UnscaledTimer unscaledTimer = new UnscaledTimer(_updater) {
+                    UnscaledTimer unscaledTimer = new UnscaledTimer(_gameUpdater) {
                         Duration = configuration.Duration
                     };
 

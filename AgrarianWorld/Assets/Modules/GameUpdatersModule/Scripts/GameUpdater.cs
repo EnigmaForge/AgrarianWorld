@@ -1,8 +1,8 @@
 ﻿using System;
 using UnityEngine;
 
-namespace GameUpdater {
-    public class Updater : MonoBehaviour, IUpdater {
+namespace GameUpdatersModule {
+    public class GameUpdater : MonoBehaviour, IGameUpdater {
         public event Action OnUpdate;
         public event Action OnFixedUpdate;
         public event Action OnLateUpdate;

@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace SceneLoaderModule {
     internal class SceneNamesEnumGenerator {
+        private static int _lastScenesCount;
         private const string ENUM_DIRECTORY_PATH = "Assets/Modules/SceneLoaderModule";
         private const string ENUM_NAME = "SceneNames";
         
