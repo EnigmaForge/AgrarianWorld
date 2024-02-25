@@ -21,6 +21,12 @@ namespace Bootstrap.Installers {
                      .FromNewComponentOnNewGameObject()
                      .AsSingle()
                      .NonLazy();
+            
+            Container.Bind<ITimersUpdater>()
+                     .To<TimersUpdater>()
+                     .FromNewComponentOnNewGameObject()
+                     .AsSingle()
+                     .NonLazy();
         }
 
         private void BindSceneLoader() {

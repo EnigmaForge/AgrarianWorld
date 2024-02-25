@@ -3,10 +3,10 @@ using GameUpdatersModule;
 
 namespace TimerModule {
     public class TimersFactory : ITimersFactory {
-        private readonly IGameUpdater _gameUpdater;
+        private readonly ITimersUpdater _timersUpdater;
 
-        public TimersFactory(IGameUpdater gameUpdater) =>
-            _gameUpdater = gameUpdater;
+        public TimersFactory(ITimersUpdater timersUpdater) =>
+            _timersUpdater = timersUpdater;
 
         public ITimer Create(TimerType timerType) {
             return timerType switch {
@@ -17,9 +17,9 @@ namespace TimerModule {
         }
 
         private ITimer CreateDefaultTimer() =>
-            new DefaultTimer(_gameUpdater);
+            new DefaultTimer(_timersUpdater);
 
         private ITimer CreateUnscaledTimer() =>
-            new UnscaledTimer(_gameUpdater);
+            new UnscaledTimer(_timersUpdater);
     }
 }

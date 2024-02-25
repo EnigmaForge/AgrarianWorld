@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TimerModule {
     public class DefaultTimer : ITimer {
-        private readonly IGameUpdater _gameUpdater;
+        private readonly ITimersUpdater _timersUpdater;
         private TimerStatus _timerStatus;
         public float Duration { get; set; }
         public float LeftTime { get; set; }
@@ -14,23 +14,23 @@ namespace TimerModule {
         public event Action OnStop;
         public event Action OnKill;
 
-        public DefaultTimer(IGameUpdater gameUpdater) =>
-            _gameUpdater = gameUpdater;
+        public DefaultTimer(ITimersUpdater timersUpdater) =>
+            _timersUpdater = timersUpdater;
 
         public void Start() {
             LeftTime = Duration;
-            _gameUpdater.OnUpdate += UpdateTimer;
+            _timersUpdater.OnUpdate += UpdateTimer;
             OnStart?.Invoke();
         }
 
         public void Pause() {
-            _gameUpdater.OnUpdate -= UpdateTimer;
+            _timersUpdater.OnUpdate -= UpdateTimer;
             OnPause?.Invoke();
         }
 
         public void Stop() {
             LeftTime = 0;
-            _gameUpdater.OnUpdate -= UpdateTimer;
+            _timersUpdater.OnUpdate -= UpdateTimer;
             OnStop?.Invoke();
         }
 
@@ -45,7 +45,7 @@ namespace TimerModule {
 
         private void Cleanup() {
             if (_timerStatus == TimerStatus.Running)
-                _gameUpdater.OnUpdate -= UpdateTimer;
+                _timersUpdater.OnUpdate -= UpdateTimer;
 
             OnStart = null;
             OnPause = null;
