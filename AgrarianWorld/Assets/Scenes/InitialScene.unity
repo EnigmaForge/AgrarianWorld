@@ -99,7 +99,8 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 940d49cdc8c35e948b5f1eaa4c8521dd,
     type: 2}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 1e771b2ca4676564baf40744886e563d,
+    type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -168,8 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111a9d79a2ff51f478b8f30b9d0f56ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneContext: {fileID: 4344201179493305904, guid: 2f2391eb004c1be45a0a07f48d72bcbe,
-    type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

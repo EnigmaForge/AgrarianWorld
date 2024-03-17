@@ -1,13 +1,12 @@
-using UnityEngine;
 using Zenject;
 
 namespace Modules.Core.Bootstraps {
-    public class InitialSceneBootstrap : MonoBehaviour {
-        private void Awake() {
+    public class InitialSceneBootstrap : BootstrapBehaviour {
+        protected override void Bootstrap() {
             InitializeContext();
             LoadFirstScene();
         }
-
+        
         private void InitializeContext() =>
             ProjectContext.Instance.EnsureIsInitialized();
 
