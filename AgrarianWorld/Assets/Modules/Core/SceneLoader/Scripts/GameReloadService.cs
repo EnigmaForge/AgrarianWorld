@@ -28,7 +28,7 @@ namespace Modules.Core.SceneLoader {
         }
 
         private void UnloadDebugMenu() {
-            DebugMenuCanvas debugMenu = Object.FindObjectOfType<DebugMenuCanvas>();
+            DebugMenuManager debugMenu = Object.FindObjectOfType<DebugMenuManager>();
             if(debugMenu != null)
                 Object.Destroy(debugMenu.gameObject);
         }

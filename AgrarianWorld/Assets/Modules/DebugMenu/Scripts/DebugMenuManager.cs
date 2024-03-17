@@ -1,10 +1,12 @@
+using System;
 using UnityEngine;
+
 namespace Modules.DebugMenu {
-    public class DebugMenuCanvas : MonoBehaviour {
+    public class DebugMenuManager : MonoBehaviour {
         private readonly string _pathToItems = "DebugMenuItems";
         [SerializeField] private GameObject _itemsContainer;
 
-        private void Start() =>
+        private void Awake() =>
             InitializeItems();
 
         private void InitializeItems() {
