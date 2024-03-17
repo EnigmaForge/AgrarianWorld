@@ -2,12 +2,11 @@ using UnityEngine;
 using Zenject;
 
 namespace Modules.Core.Bootstraps {
-    public class GameSceneBootstrap : BootstrapBehaviour {
+    public class GameSceneBootstrap : MonoBehaviour {
         [SerializeField] private SceneContext _sceneContext;
         
-        protected override void Bootstrap() {
+        private void Start() =>
             InitializeContext();
-        }
 
         private void InitializeContext() {
             SceneContext sceneContext = Instantiate(_sceneContext);
