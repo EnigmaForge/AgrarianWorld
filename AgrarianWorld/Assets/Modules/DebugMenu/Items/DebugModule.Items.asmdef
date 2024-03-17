@@ -1,0 +1,24 @@
+{
+    "name": "DebugModule.Items",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7ab5c09dada73fa4aa5c410e6eb9609c",
+        "GUID:1fb098e0846c5634bad7e20c6a563aa5",
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "Unity",
+            "expression": "",
+            "define": "INCLUDE_DEBUG_MENU_IN_BUILD"
+        }
+    ],
+    "noEngineReferences": false
+}
