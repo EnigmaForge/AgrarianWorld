@@ -1,3 +1,4 @@
+using Modules.Core.FiniteStateMachine.GameStateMachine.Installers;
 using Modules.Core.SceneLoader.Installers;
 using UnityEngine;
 using Zenject;
@@ -7,6 +8,7 @@ namespace Modules.Core.Installers {
     public class ProjectContextInstaller : ScriptableObjectInstaller<ProjectContextInstaller> {
         public override void InstallBindings() {
             SceneLoaderInstaller.Install(Container);
+            GameStateMachineInstaller.Install(Container); 
         }
     }
 }
