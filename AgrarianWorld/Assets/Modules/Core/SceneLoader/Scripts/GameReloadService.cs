@@ -1,4 +1,3 @@
-using Modules.DebugMenu;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
@@ -18,19 +17,12 @@ namespace Modules.Core.SceneLoader {
 
         public void Reload() {
             UnloadProjectContext();
-            UnloadDebugMenu();
             LoadInitialScene();
         }
 
         private void UnloadProjectContext() {
             _container.UnbindAll();
             Object.Destroy(ProjectContext.Instance.gameObject);
-        }
-
-        private void UnloadDebugMenu() {
-            DebugMenuManager debugMenu = Object.FindObjectOfType<DebugMenuManager>();
-            if(debugMenu != null)
-                Object.Destroy(debugMenu.gameObject);
         }
 
         private void LoadInitialScene() =>
