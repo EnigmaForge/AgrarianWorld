@@ -8,11 +8,15 @@ namespace Modules.Core.Bootstraps {
         
         private void Start() {
             InitializeContext();
+            CreateDebugMenu();
             LoadGameMenu();
         }
 
         private void InitializeContext() =>
             ProjectContext.Instance.EnsureIsInitialized();
+
+        private void CreateDebugMenu() =>
+            ProjectContext.Instance.Container.InstantiatePrefab(_debugMenuPrefab);
 
         private void LoadGameMenu() {
             IGameStateMachine gameStateMachine = ProjectContext.Instance.Container.Resolve<IGameStateMachine>();
