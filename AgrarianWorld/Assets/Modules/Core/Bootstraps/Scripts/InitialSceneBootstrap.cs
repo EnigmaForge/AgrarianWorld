@@ -1,6 +1,5 @@
-using Modules.Core.SceneLoader;
+using Modules.Core.FiniteStateMachine.GameStateMachine;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Modules.Core.Bootstraps {
@@ -9,21 +8,15 @@ namespace Modules.Core.Bootstraps {
         
         private void Start() {
             InitializeContext();
-            InitializeDebugMenu();
-            LoadFirstScene();
+            LoadGameMenu();
         }
 
         private void InitializeContext() =>
             ProjectContext.Instance.EnsureIsInitialized();
 
-        private void InitializeDebugMenu() {
-            GameObject debugMenu = Instantiate(_debugMenuPrefab);
-            DontDestroyOnLoad(debugMenu);
-        }
-
-        private void LoadFirstScene() {
-            ISceneLoader sceneLoader = ProjectContext.Instance.Container.Resolve<ISceneLoader>();
-            sceneLoader.Load(SceneNames.MenuScene.ToString(), LoadSceneMode.Single);
+        private void LoadGameMenu() {
+            IGameStateMachine gameStateMachine = ProjectContext.Instance.Container.Resolve<IGameStateMachine>();
+            gameStateMachine.ChangeState<MenuState>(); 
         }
     }
 }

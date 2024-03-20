@@ -1,11 +1,10 @@
 {
-    "name": "CoreModule",
+    "name": "GameStateMachine",
     "rootNamespace": "",
     "references": [
-        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+        "GUID:07b339f75feb1c942a42b40bd076f086",
         "GUID:1fb098e0846c5634bad7e20c6a563aa5",
-        "GUID:7d003c3351797054d8d473dc1a5b0d74",
-        "GUID:07b339f75feb1c942a42b40bd076f086"
+        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
