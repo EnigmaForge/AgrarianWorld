@@ -161,7 +161,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 0}
+  m_BackGroundColor: {r: 0.11320752, g: 0.11320752, b: 0.11320752, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -291,6 +291,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sceneContext: {fileID: 702455056744094701, guid: 2c56aecb83357034f864f8abae77814b,
+    type: 3}
+  _menuCanvas: {fileID: 6240903325766630037, guid: 876c9d974fb871f4f9141e89945e087b,
     type: 3}
 --- !u!4 &1146274500
 Transform:
