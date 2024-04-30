@@ -1,4 +1,5 @@
 using Modules.GameMenu;
+using Modules.ViewsModule;
 using UnityEngine;
 using Zenject;
 
@@ -22,7 +23,11 @@ namespace Modules.Core.Bootstraps {
             sceneContext.Run();
         }
 
-        private void InitializeGameMenu() =>
-            _container.InstantiatePrefab(_gameMenuWindow); 
+        private void InitializeGameMenu() {
+            GameObject gameMenuWindowObject = _container.InstantiatePrefab(_gameMenuWindow);
+
+            if (gameMenuWindowObject.TryGetComponent(out WindowBehaviour gameMenuWindow))
+                gameMenuWindow.SetActive(true);
+        }
     }
 }

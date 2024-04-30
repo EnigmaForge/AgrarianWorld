@@ -1,4 +1,4 @@
 {
 	"name": "GameMenu",
-	"references":[ "GUID:cf50eca2d4d7b174ca39b5c55cde466f" ]
+	"references":[ "GUID:cf50eca2d4d7b174ca39b5c55cde466f", "GUID:0d8beb7f090555447a6cf5ce9e54dbb4" ]
 }

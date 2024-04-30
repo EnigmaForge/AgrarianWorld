@@ -572,6 +572,7 @@ GameObject:
   - component: {fileID: 3393212529813953881}
   - component: {fileID: 9023964872906584557}
   - component: {fileID: 1947057334503125243}
+  - component: {fileID: 3472308155231581997}
   m_Layer: 5
   m_Name: NavigationButtons
   m_TagString: Untagged
@@ -641,6 +642,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 1
+--- !u!114 &3472308155231581997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4611129537589390222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c30f371315d542cfb03bc437babb8b10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startGameButton: {fileID: 6174395930633855338}
+  _settingsButton: {fileID: 5377001707959669452}
+  _quitButton: {fileID: 8416644412455504936}
 --- !u!1 &7802856113021999300
 GameObject:
   m_ObjectHideFlags: 0
