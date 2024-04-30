@@ -1,17 +1,14 @@
+using Modules.Core.SceneLoader;
 using Modules.GameMenu;
 using Modules.ViewsModule;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Modules.Core.Bootstraps {
-    public class MenuSceneBootstrap : MonoBehaviour {
+    public class MenuSceneBootstrap : BootstrapBehaviour {
         [SerializeField] private SceneContext _sceneContext;
         [SerializeField] private GameMenuWindow _gameMenuWindow;
-        private DiContainer _container;
-
-        [Inject]
-        private void InjectDependencies(DiContainer container) =>
-            _container = container;
 
         private void Start() {
             InitializeContext();
@@ -24,10 +21,12 @@ namespace Modules.Core.Bootstraps {
         }
 
         private void InitializeGameMenu() {
-            GameObject gameMenuWindowObject = _container.InstantiatePrefab(_gameMenuWindow);
-
+            GameObject gameMenuWindowObject = ProjectContext.Instance.Container.InstantiatePrefab(_gameMenuWindow);
+            
             if (gameMenuWindowObject.TryGetComponent(out WindowBehaviour gameMenuWindow))
                 gameMenuWindow.SetActive(true);
+            
+            SceneManager.MoveGameObjectToScene(gameMenuWindowObject, SceneManager.GetSceneByName(SceneNames.MenuScene.ToString()));
         }
     }
 }

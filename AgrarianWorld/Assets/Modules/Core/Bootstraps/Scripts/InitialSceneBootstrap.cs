@@ -1,13 +1,13 @@
 using Modules.Core.FiniteStateMachine.GameStateMachine;
-using UnityEngine;
 using Zenject;
 
 namespace Modules.Core.Bootstraps {
-    public class InitialSceneBootstrap : MonoBehaviour {
-        private void Start() {
+    public class InitialSceneBootstrap : BootstrapBehaviour {
+        protected override void OnInitialize() =>
             InitializeContext();
+
+        private void Start() =>
             LoadGameMenu();
-        }
 
         private void InitializeContext() =>
             ProjectContext.Instance.EnsureIsInitialized();
