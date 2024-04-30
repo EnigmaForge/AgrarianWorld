@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using Zenject;
 
 namespace Modules.ViewsModule {
     public class PresentersContainer {
@@ -11,14 +11,13 @@ namespace Modules.ViewsModule {
             _views = views;
 
         public void CreatePresenter<TPresenter, TView>() where TPresenter : PresenterBase where TView : ViewBehaviour {
-            object presenterInstance = Activator.CreateInstance(typeof(TPresenter));
-            PresenterBase presenter = presenterInstance as PresenterBase;
+            PresenterBase presenter = ProjectContext.Instance.Container.Instantiate<TPresenter>();
             ViewBehaviour view = GetView<TView>();
             
             presenter!.SetView(view);
             presenter.Initialize();
             
-            _presenters.Add(presenterInstance as PresenterBase);
+            _presenters.Add(presenter);
         }
 
         public TPresenter GetPresenter<TPresenter>() where TPresenter : PresenterBase =>
