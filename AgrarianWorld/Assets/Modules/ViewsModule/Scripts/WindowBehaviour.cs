@@ -16,8 +16,21 @@ namespace Modules.ViewsModule {
 
         private void InitializeComponents() {
             Canvas = GetComponent<Canvas>();
-            ViewBehaviour[] views = GetComponentsInChildren<ViewBehaviour>();
+            ViewBehaviour[] views = GetViews();
             Container = new PresentersContainer(views);
+        }
+
+        private ViewBehaviour[] GetViews() {
+            WindowBehaviour[] windows = GetComponentsInChildren<WindowBehaviour>();
+            foreach (WindowBehaviour window in windows)
+                window.SetActive(false);
+            
+            ViewBehaviour[] views = GetComponentsInChildren<ViewBehaviour>();
+            
+            foreach (WindowBehaviour window in windows)
+                window.SetActive(true);
+
+            return views;
         }
 
         private void OnDestroy() =>
