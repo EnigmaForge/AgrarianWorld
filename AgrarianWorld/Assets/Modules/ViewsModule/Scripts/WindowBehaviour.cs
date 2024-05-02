@@ -1,4 +1,5 @@
 using UnityEngine;
+using Zenject;
 
 namespace Modules.ViewsModule {
     [RequireComponent(typeof(Canvas))]
@@ -6,6 +7,11 @@ namespace Modules.ViewsModule {
         protected Canvas Canvas;
         protected PresentersContainer Container;
         private ViewBehaviour[] _views;
+        private DiContainer _container;
+
+        [Inject]
+        private void InjectDependencies(DiContainer container) =>
+            _container = container;
 
         private void Awake() {
             SetActive(true);
@@ -17,7 +23,7 @@ namespace Modules.ViewsModule {
         private void InitializeComponents() {
             Canvas = GetComponent<Canvas>();
             ViewBehaviour[] views = GetViews();
-            Container = new PresentersContainer(views);
+            Container = new PresentersContainer(views, _container);
         }
 
         private ViewBehaviour[] GetViews() {

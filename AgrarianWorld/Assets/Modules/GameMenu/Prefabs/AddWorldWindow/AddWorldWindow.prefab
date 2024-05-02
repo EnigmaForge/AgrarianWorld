@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 654784217435152668}
   - component: {fileID: 6860331683132843024}
   m_Layer: 5
-  m_Name: CreateWorldWindow
+  m_Name: AddWorldWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +242,7 @@ PrefabInstance:
     - target: {fileID: 8931128937418946368, guid: e2bd84c2e6b7c324e83ff58b9a57feaf,
         type: 3}
       propertyPath: m_Name
-      value: CreateWorldPopupView
+      value: AddWorldPopupView
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

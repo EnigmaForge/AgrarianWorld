@@ -1,13 +1,12 @@
-using Modules.Core.FiniteStateMachine.GameStateMachine;
 using Modules.ViewsModule;
 using UnityEngine;
 
 namespace Modules.GameMenu {
     public class MenuNavigationButtonsPresenter : Presenter<MenuNavigationButtonsView> {
-        private readonly IGameStateMachine _gameStateMachine;
+        private readonly OpenWorldWindow _openWorldWindow;
 
-        private MenuNavigationButtonsPresenter(IGameStateMachine gameStateMachine) =>
-            _gameStateMachine = gameStateMachine;
+        private MenuNavigationButtonsPresenter(OpenWorldWindow openWorldWindow) =>
+            _openWorldWindow = openWorldWindow;
 
         public override void Initialize() {
             View.OnClickStartGame += OnClickStartGame;
@@ -22,7 +21,7 @@ namespace Modules.GameMenu {
         }
 
         private void OnClickStartGame() =>
-            _gameStateMachine.ChangeState<GameState>();
+            _openWorldWindow.SetActive(true);
 
         private void OnClickSettings() =>
             Debug.LogError("NO SETTINGS!");

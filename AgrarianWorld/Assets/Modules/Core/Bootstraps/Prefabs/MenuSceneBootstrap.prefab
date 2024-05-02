@@ -48,3 +48,5 @@ MonoBehaviour:
     type: 3}
   _gameMenuWindow: {fileID: 5058520571821434194, guid: 87a2aac60faae1f41b5e95e1942eeb7d,
     type: 3}
+  _openWorldWindow: {fileID: 8943386428474601521, guid: c6313213aa7642547a1055973551a7a9,
+    type: 3}

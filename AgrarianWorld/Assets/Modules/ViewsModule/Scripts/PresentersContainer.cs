@@ -6,12 +6,15 @@ namespace Modules.ViewsModule {
     public class PresentersContainer {
         private readonly List<PresenterBase> _presenters = new();
         private readonly ViewBehaviour[] _views;
+        private readonly DiContainer _container;
 
-        public PresentersContainer(ViewBehaviour[] views) =>
+        public PresentersContainer(ViewBehaviour[] views, DiContainer container) {
             _views = views;
+            _container = container;
+        }
 
         public void CreatePresenter<TPresenter, TView>() where TPresenter : PresenterBase where TView : ViewBehaviour {
-            PresenterBase presenter = ProjectContext.Instance.Container.Instantiate<TPresenter>();
+            PresenterBase presenter = _container.Instantiate<TPresenter>();
             ViewBehaviour view = GetView<TView>();
             
             presenter!.SetView(view);

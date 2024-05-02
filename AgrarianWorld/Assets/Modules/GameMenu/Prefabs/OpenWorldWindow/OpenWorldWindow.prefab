@@ -33,7 +33,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5063134111591337812}
-  - {fileID: 3062805487273328343}
+  - {fileID: 3309176474923963099}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -240,7 +240,7 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 7292484352002693704}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &8525922244402238536
+--- !u!1001 &8160489812375468100
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -391,7 +391,7 @@ PrefabInstance:
     - target: {fileID: 7960214152961428058, guid: eacde02706ea8bf499f381e339ff9213,
         type: 3}
       propertyPath: m_Name
-      value: CreateWorldWindow
+      value: AddWorldWindow
       objectReference: {fileID: 0}
     - target: {fileID: 7960214152961428058, guid: eacde02706ea8bf499f381e339ff9213,
         type: 3}
@@ -403,9 +403,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eacde02706ea8bf499f381e339ff9213, type: 3}
---- !u!224 &3062805487273328343 stripped
+--- !u!224 &3309176474923963099 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6688808924129880735, guid: eacde02706ea8bf499f381e339ff9213,
     type: 3}
-  m_PrefabInstance: {fileID: 8525922244402238536}
+  m_PrefabInstance: {fileID: 8160489812375468100}
   m_PrefabAsset: {fileID: 0}

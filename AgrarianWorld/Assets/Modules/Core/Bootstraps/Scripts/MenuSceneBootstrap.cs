@@ -1,32 +1,31 @@
-using Modules.Core.SceneLoader;
 using Modules.GameMenu;
-using Modules.ViewsModule;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace Modules.Core.Bootstraps {
     public class MenuSceneBootstrap : BootstrapBehaviour {
         [SerializeField] private SceneContext _sceneContext;
+        
+        [Header("Windows")] 
+        [SerializeField] private OpenWorldWindow _openWorldWindow;
         [SerializeField] private GameMenuWindow _gameMenuWindow;
+        
+        private SceneContext _sceneContextInstance;
 
         private void Start() {
             InitializeContext();
-            InitializeGameMenu();
+            InitializeWindows();
         }
 
         private void InitializeContext() {
-            SceneContext sceneContext = Instantiate(_sceneContext);
-            sceneContext.Run();
+            _sceneContextInstance = Instantiate(_sceneContext);
+            _sceneContextInstance.Run();
         }
 
-        private void InitializeGameMenu() {
-            GameObject gameMenuWindowObject = ProjectContext.Instance.Container.InstantiatePrefab(_gameMenuWindow);
-            
-            if (gameMenuWindowObject.TryGetComponent(out WindowBehaviour gameMenuWindow))
-                gameMenuWindow.SetActive(true);
-            
-            SceneManager.MoveGameObjectToScene(gameMenuWindowObject, SceneManager.GetSceneByName(SceneNames.MenuScene.ToString()));
+        private void InitializeWindows() {
+            _sceneContextInstance.Container.InstantiatePrefab(_openWorldWindow);
+            GameMenuWindow gameMenuWindow = _sceneContextInstance.Container.InstantiatePrefab(_gameMenuWindow).GetComponent<GameMenuWindow>();
+            gameMenuWindow.SetActive(true);
         }
     }
 }

@@ -9,7 +9,6 @@ namespace Modules.Core.Installers {
         public override void InstallBindings() {
             SceneLoaderInstaller.Install(Container);
             GameStateMachineInstaller.Install(Container);
-            UIWindowsInstaller.Install(Container);
         }
     }
 }
