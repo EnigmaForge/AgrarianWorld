@@ -2,7 +2,7 @@ using UnityEngine;
 using Zenject;
 
 namespace Modules.Core.Bootstraps {
-    public class GameSceneBootstrap : MonoBehaviour {
+    public class GameSceneBootstrap : BootstrapBehaviour {
         [SerializeField] private SceneContext _sceneContext;
         
         private void Start() =>

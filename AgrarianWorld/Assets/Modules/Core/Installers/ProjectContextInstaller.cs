@@ -8,7 +8,7 @@ namespace Modules.Core.Installers {
     public class ProjectContextInstaller : ScriptableObjectInstaller<ProjectContextInstaller> {
         public override void InstallBindings() {
             SceneLoaderInstaller.Install(Container);
-            GameStateMachineInstaller.Install(Container); 
+            GameStateMachineInstaller.Install(Container);
         }
     }
 }
