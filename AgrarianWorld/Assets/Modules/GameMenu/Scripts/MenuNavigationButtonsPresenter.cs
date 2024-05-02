@@ -1,13 +1,12 @@
 using Modules.Core.FiniteStateMachine.GameStateMachine;
 using Modules.ViewsModule;
 using UnityEngine;
-using Zenject;
 
 namespace Modules.GameMenu {
-    public class NavigationButtonsPresenter : Presenter<NavigationButtonsView> {
+    public class MenuNavigationButtonsPresenter : Presenter<MenuNavigationButtonsView> {
         private readonly IGameStateMachine _gameStateMachine;
 
-        private NavigationButtonsPresenter(IGameStateMachine gameStateMachine) =>
+        private MenuNavigationButtonsPresenter(IGameStateMachine gameStateMachine) =>
             _gameStateMachine = gameStateMachine;
 
         public override void Initialize() {

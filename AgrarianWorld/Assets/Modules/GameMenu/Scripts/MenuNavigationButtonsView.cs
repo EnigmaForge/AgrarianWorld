@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Modules.GameMenu {
-    public class NavigationButtonsView : ViewBehaviour {
+    public class MenuNavigationButtonsView : ViewBehaviour {
         [SerializeField] private Button _startGameButton;
         [SerializeField] private Button _settingsButton;
         [SerializeField] private Button _quitButton;
