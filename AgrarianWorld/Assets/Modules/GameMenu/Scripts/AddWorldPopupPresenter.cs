@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Modules.Core.FiniteStateMachine.GameStateMachine;
+using Modules.Core.Global.Enums;
 using Modules.SavingSystem;
 using Modules.ViewsModule;
 
 namespace Modules.GameMenu {
     public class AddWorldPopupPresenter : Presenter<AddWorldPopupView> {
+        private const string WORLDS_LIST_SAVES_KEY = "WorldsList";
         private readonly AddWorldWindow _addWorldWindow;
         private readonly IGameStateMachine _gameStateMachine;
         private readonly WorldsListModel _worldsListModel;
@@ -48,11 +50,22 @@ namespace Modules.GameMenu {
             _addWorldWindow.SetActive(false);
 
         private void CreateWorld() {
+            AddNewWorld();
+            SaveWorlds();
+            _gameStateMachine.ChangeState<GameState>();
+        }
+
+        private void AddNewWorld() {
             WorldData newWorld = new WorldData(_worldDataHolder.WorldName, _worldDataHolder.Seed, _worldDataHolder.WorldType, GetCurrentDay());
             _worldsListModel.AddWorld(newWorld);
-            _dataStorageService.Save("WorldsList", _worldsListModel.GetWorlds(), "Worlds");
-            
-            _gameStateMachine.ChangeState<GameState>();
+        }
+
+        private void SaveWorlds() {
+            WorldsListHolder worldsListHolder = new WorldsListHolder {
+                Worlds = _worldsListModel.GetWorlds()
+            };
+
+            _dataStorageService.Save(WORLDS_LIST_SAVES_KEY, worldsListHolder, SaveGroups.Worlds.ToString());
         }
 
         private void UpdateWorldName(string worldName) =>
@@ -65,6 +78,6 @@ namespace Modules.GameMenu {
             _worldDataHolder.WorldType = Enum.Parse<WorldType>(worldType);
 
         private string GetCurrentDay() =>
-            DateTime.Now.ToString("dd MMMM yyyy");
+            DateTime.Now.ToString("dd.MM.yyyy");
     }
 }
