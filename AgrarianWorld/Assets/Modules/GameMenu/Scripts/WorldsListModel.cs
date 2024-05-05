@@ -36,5 +36,8 @@ namespace Modules.GameMenu {
         
         public WorldData GetWorld(string worldName) =>
             _worlds.FirstOrDefault(worldData => worldData.WorldName == worldName);
+
+        public List<WorldData> GetWorlds() =>
+            _worlds;
     }
 }
