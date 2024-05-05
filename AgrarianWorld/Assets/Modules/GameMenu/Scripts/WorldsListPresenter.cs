@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Modules.Core.Global.Enums;
 using Modules.SavingSystem;
 using Modules.ViewsModule;
@@ -14,6 +15,7 @@ namespace Modules.GameMenu {
         }
 
         public override void Initialize() {
+            View.OnClickItem += SelectWorld;
             _worldsListModel.OnWorldsListChanged += UpdateWorldsList;
             InitializeWorldsList();
         }
@@ -27,10 +29,23 @@ namespace Modules.GameMenu {
             UpdateWorldsList();
         }
 
-        public override void Dispose() =>
+        public override void Dispose() {
+            View.OnClickItem -= SelectWorld;
             _worldsListModel.OnWorldsListChanged -= UpdateWorldsList;
+        }
 
-        private void UpdateWorldsList() =>
-            View.UpdateList(_worldsListModel.GetWorlds());
+        private void SelectWorld(int itemIndex) {
+            List<WorldData> worlds = _worldsListModel.GetWorlds();
+            _worldsListModel.SelectedWorld = worlds[itemIndex];
+        }
+
+        private void UpdateWorldsList() {
+            WorldsListHolder worldsListHolder = new WorldsListHolder() {
+                Worlds = _worldsListModel.GetWorlds()
+            };
+            
+            _dataStorageService.Save(WORLDS_LIST_SAVES_KEY, worldsListHolder, SaveGroups.Worlds.ToString());
+            View.UpdateList(worldsListHolder.Worlds);
+        }
     }
 }
