@@ -7,6 +7,7 @@ namespace Modules.Core.Installers {
     [CreateAssetMenu(fileName = nameof(ProjectContextInstaller), menuName = "Installers/" + nameof(ProjectContextInstaller))]
     public class ProjectContextInstaller : ScriptableObjectInstaller<ProjectContextInstaller> {
         public override void InstallBindings() {
+            DataInstaller.Install(Container);
             SceneLoaderInstaller.Install(Container);
             GameStateMachineInstaller.Install(Container);
         }
