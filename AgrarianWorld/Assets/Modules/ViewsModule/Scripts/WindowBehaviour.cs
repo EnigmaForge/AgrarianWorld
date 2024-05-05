@@ -14,10 +14,8 @@ namespace Modules.ViewsModule {
             _container = container;
 
         private void Awake() {
-            SetActive(true);
             InitializeComponents();
             SetupPresenters();
-            SetActive(false);
         }
 
         private void InitializeComponents() {

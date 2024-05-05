@@ -23,9 +23,13 @@ namespace Modules.Core.Bootstraps {
         }
 
         private void InitializeWindows() {
-            _sceneContextInstance.Container.InstantiatePrefab(_openWorldWindow);
-            GameMenuWindow gameMenuWindow = _sceneContextInstance.Container.InstantiatePrefab(_gameMenuWindow).GetComponent<GameMenuWindow>();
-            gameMenuWindow.SetActive(true);
+            GameObject openWorldWindowInstance = _sceneContextInstance.Container.InstantiatePrefab(_openWorldWindow);
+            GameObject gameMenuWindowInstance = _sceneContextInstance.Container.InstantiatePrefab(_gameMenuWindow);
+            
+            if (openWorldWindowInstance.TryGetComponent(out OpenWorldWindow openWorldWindow))
+                openWorldWindow.SetActive(false);
+            if (gameMenuWindowInstance.TryGetComponent(out GameMenuWindow gameMenuWindow))
+                gameMenuWindow.SetActive(true);
         }
     }
 }
