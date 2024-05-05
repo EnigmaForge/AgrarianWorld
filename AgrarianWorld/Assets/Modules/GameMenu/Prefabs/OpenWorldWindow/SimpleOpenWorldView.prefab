@@ -864,6 +864,7 @@ GameObject:
   - component: {fileID: 3014228404581270161}
   - component: {fileID: 72056475192899341}
   - component: {fileID: 8321880884802140006}
+  - component: {fileID: 4065527957398002449}
   m_Layer: 5
   m_Name: WorldsList
   m_TagString: Untagged
@@ -959,6 +960,21 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4065527957398002449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3895442922195679705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142a4f949db8492cbdc3a18878b7cf76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _content: {fileID: 873830667720903065}
+  _worldItemPrefab: {fileID: 6557229308096511438, guid: 2f9ab696cc0c94446bc699d38e1b7680,
+    type: 3}
 --- !u!1 &4876114831081460633
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,13 +17,14 @@ namespace Modules.GameMenu {
         }
 
         public event Action<WorldData> OnSelectedWorldChanged;
+        public event Action OnWorldsListChanged;
 
         public void AddWorld(WorldData worldData) {
             if (_worldsListHolder.Worlds.Any(data => data.WorldName == worldData.WorldName))
                 throw new Exception("World already exist in worlds list");
             
-            SelectedWorld = worldData;
             _worldsListHolder.Worlds.Add(worldData);
+            OnWorldsListChanged?.Invoke();
         }
         
         public void RemoveWorld(WorldData worldData) {
@@ -32,6 +33,7 @@ namespace Modules.GameMenu {
 
             SelectedWorld = null;
             _worldsListHolder.Worlds.Remove(worldData);
+            OnWorldsListChanged?.Invoke();
         }
         
         public WorldData GetWorld(string worldName) =>

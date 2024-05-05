@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 5637685281452261559}
   - component: {fileID: 7788486187377377408}
   m_Layer: 5
-  m_Name: LastSaves
+  m_Name: LastOpen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Last save: 20.05.2003'
+  m_text: 'Last open: 20.05.2003'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 97da420cfb1a8824cbf94ec17859e736, type: 2}
   m_sharedMaterial: {fileID: -8727968572762412081, guid: 97da420cfb1a8824cbf94ec17859e736,
@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 256086779549935622}
   - component: {fileID: 6222215868915112502}
   - component: {fileID: 1060389347596055267}
+  - component: {fileID: 6557229308096511438}
   m_Layer: 5
   m_Name: WorldItem
   m_TagString: Untagged
@@ -249,7 +250,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1400, y: 120}
+  m_SizeDelta: {x: 700, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &256086779549935622
 MonoBehaviour:
@@ -309,6 +310,21 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &6557229308096511438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8612196774098632971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acfd819ff210483da9145d799618deb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _worldImage: {fileID: 3551054641258206081}
+  _worldName: {fileID: 6295495152352528289}
+  _lastOpenDate: {fileID: 7788486187377377408}
 --- !u!1 &9208180427434880431
 GameObject:
   m_ObjectHideFlags: 0
