@@ -13,13 +13,13 @@ namespace Modules.GameMenu {
         public event Action OnClickSettings;
         public event Action OnClickQuit;
 
-        private void Awake() {
+        private void OnEnable() {
             _startGameButton.onClick.AddListener(InvokeOnClickStartGame);
             _settingsButton.onClick.AddListener(InvokeOnClickSettings);
             _quitButton.onClick.AddListener(InvokeOnClickQuit);
         }
 
-        private void OnDestroy() {
+        private void OnDisable() {
             _startGameButton.onClick.RemoveListener(InvokeOnClickStartGame);
             _settingsButton.onClick.RemoveListener(InvokeOnClickSettings);
             _quitButton.onClick.RemoveListener(InvokeOnClickQuit);

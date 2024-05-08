@@ -32,7 +32,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 4851434160770477734}
+  - {fileID: 8604967139580389188}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a8d3762420a47a29e29162c7037549b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &7801603975217443839
+--- !u!1001 &6376499852396608029
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -156,7 +156,7 @@ PrefabInstance:
     - target: {fileID: 3393212529813953881, guid: d6ba0aef9412abd4297bca9821fa9f1e,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 3393212529813953881, guid: d6ba0aef9412abd4297bca9821fa9f1e,
         type: 3}
@@ -223,94 +223,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4349847230512618414, guid: d6ba0aef9412abd4297bca9821fa9f1e,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4349847230512618414, guid: d6ba0aef9412abd4297bca9821fa9f1e,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4349847230512618414, guid: d6ba0aef9412abd4297bca9821fa9f1e,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4349847230512618414, guid: d6ba0aef9412abd4297bca9821fa9f1e,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4349847230512618414, guid: d6ba0aef9412abd4297bca9821fa9f1e,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4611129537589390222, guid: d6ba0aef9412abd4297bca9821fa9f1e,
         type: 3}
       propertyPath: m_Name
-      value: NavigationButtons
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766293135522211081, guid: d6ba0aef9412abd4297bca9821fa9f1e,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766293135522211081, guid: d6ba0aef9412abd4297bca9821fa9f1e,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766293135522211081, guid: d6ba0aef9412abd4297bca9821fa9f1e,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766293135522211081, guid: d6ba0aef9412abd4297bca9821fa9f1e,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4766293135522211081, guid: d6ba0aef9412abd4297bca9821fa9f1e,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8530469866272180915, guid: d6ba0aef9412abd4297bca9821fa9f1e,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8530469866272180915, guid: d6ba0aef9412abd4297bca9821fa9f1e,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8530469866272180915, guid: d6ba0aef9412abd4297bca9821fa9f1e,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8530469866272180915, guid: d6ba0aef9412abd4297bca9821fa9f1e,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8530469866272180915, guid: d6ba0aef9412abd4297bca9821fa9f1e,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: MenuNavigationButtons
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6ba0aef9412abd4297bca9821fa9f1e, type: 3}
---- !u!224 &4851434160770477734 stripped
+--- !u!224 &8604967139580389188 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3393212529813953881, guid: d6ba0aef9412abd4297bca9821fa9f1e,
     type: 3}
-  m_PrefabInstance: {fileID: 7801603975217443839}
+  m_PrefabInstance: {fileID: 6376499852396608029}
   m_PrefabAsset: {fileID: 0}
