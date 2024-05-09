@@ -13,9 +13,8 @@ namespace Modules.GameMenu {
         [SerializeField] private TMP_Text _worldName;
         [SerializeField] private TMP_Text _lastOpenDate;
         private bool _selected;
-        private int _index;
 
-        public event Action<int> OnClickOpenWorldButton;
+        public event Action OnClickOpenWorldButton;
 
         private void OnEnable() =>
             _openWorldButton.onClick.AddListener(OnClickOpenWorldButtonInvoke);
@@ -24,7 +23,7 @@ namespace Modules.GameMenu {
             _openWorldButton.onClick.RemoveListener(OnClickOpenWorldButtonInvoke);
 
         private void OnClickOpenWorldButtonInvoke() =>
-            OnClickOpenWorldButton?.Invoke(_index);
+            OnClickOpenWorldButton?.Invoke();
 
         public void SetWorldImage(Sprite worldImage) =>
             _worldImage.sprite = worldImage;
@@ -49,8 +48,5 @@ namespace Modules.GameMenu {
             if (!_selected)
                 _backgroundImage.enabled = false;
         }
-
-        public void SetIndex(int index) =>
-            _index = index;
     }
 }
