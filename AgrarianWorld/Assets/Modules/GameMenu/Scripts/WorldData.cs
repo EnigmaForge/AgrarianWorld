@@ -4,11 +4,11 @@ namespace Modules.GameMenu {
     [Serializable]
     public class WorldData {
         public string WorldName;
-        public string Seed;
+        public int Seed;
         public WorldType WorldType;
         public string LastOpenDate;
         
-        public WorldData(string worldName, string seed, WorldType worldType, string lastOpenDate) {
+        public WorldData(string worldName, int seed, WorldType worldType, string lastOpenDate) {
             WorldName = worldName;
             Seed = seed;
             LastOpenDate = lastOpenDate;

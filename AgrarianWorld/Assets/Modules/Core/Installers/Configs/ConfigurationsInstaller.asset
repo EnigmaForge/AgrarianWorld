@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _worldsListConfiguration: {fileID: 11400000, guid: cf643ec121da1db45a3f68830e2c862c,
     type: 2}
+  _realisticTerrainGenerationConfig: {fileID: 11400000, guid: ee4aaa67e5a04ba43a5f8c3ad0d11cac,
+    type: 2}

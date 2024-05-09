@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7dbd94e0244e709b4fef15b958c806, type: 3}
+  m_Name: RealisticTerrainGenerationConfig_Default
+  m_EditorClassIdentifier: 
+  <HeightmapResolution>k__BackingField: 128
+  <HeightmapDepth>k__BackingField: 20
+  <NoiseScale>k__BackingField: 0.3
+  <TerrainPrefab>k__BackingField: {fileID: 3928817338805600765, guid: 23aacec3608caa343a067b4f43ba01ff,
+    type: 3}

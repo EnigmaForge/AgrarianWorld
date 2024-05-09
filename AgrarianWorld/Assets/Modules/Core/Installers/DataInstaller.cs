@@ -6,6 +6,9 @@ namespace Modules.Core.Installers {
         public override void InstallBindings() {
             Container.Bind<WorldsListModel>()
                      .AsSingle();
+
+            Container.Bind<AddWindowInitialValuesModel>()
+                     .AsSingle();
         }
     }
 }
