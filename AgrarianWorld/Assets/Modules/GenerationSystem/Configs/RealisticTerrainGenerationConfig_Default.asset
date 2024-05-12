@@ -12,8 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7dbd94e0244e709b4fef15b958c806, type: 3}
   m_Name: RealisticTerrainGenerationConfig_Default
   m_EditorClassIdentifier: 
-  <HeightmapResolution>k__BackingField: 128
-  <HeightmapDepth>k__BackingField: 20
-  <NoiseScale>k__BackingField: 0.3
+  <HeightmapResolution>k__BackingField: 1024
+  <TerrainSize>k__BackingField: {x: 128, y: 10, z: 128}
+  <NoiseScale>k__BackingField: 0.1
+  <Octaves>k__BackingField: 3
+  <Lacunarity>k__BackingField: 3
+  <Persistence>k__BackingField: 0.15
+  <ErosionIterations>k__BackingField: 100
+  <ErosionStrength>k__BackingField: 0.05
+  <VignetteIntensity>k__BackingField: 1.35
   <TerrainPrefab>k__BackingField: {fileID: 3928817338805600765, guid: 23aacec3608caa343a067b4f43ba01ff,
     type: 3}
+  <TerrainMaterial>k__BackingField: {fileID: 2100000, guid: ed847a1cf79d33d42b582f38856a3440,
+    type: 2}

@@ -23,18 +23,9 @@ namespace Modules.GenerationSystem.Editor {
         private void GeneratePerlinTexture(RealisticTerrainGenerationConfig config) {
             Random.InitState(0);
 
-            int resolution = (int)config.HeightmapResolution;
-            float scaledResolution = resolution * config.NoiseScale;
-            float[,] heights = new float[resolution, resolution];
-            for (int x = 0; x < resolution; x++) {
-                for (int y = 0; y < resolution; y++) {
-                    float xCoordinate = x / scaledResolution;
-                    float yCoordinate = y / scaledResolution;
-                    heights[x, y] = Mathf.PerlinNoise(xCoordinate, yCoordinate);
-                }
-            }
-
-            _perlinTexture = CreateTexture(heights, resolution, resolution);
+            RealisticTerrainGenerator terrainGenerator = new RealisticTerrainGenerator(config);
+            float[,] heights = terrainGenerator.GenerateHeightsByNoise(RESOLUTION);
+            _perlinTexture = CreateTexture(heights, RESOLUTION, RESOLUTION);
         }
 
         private Texture2D CreateTexture(float[,] heights, int width, int height) {
