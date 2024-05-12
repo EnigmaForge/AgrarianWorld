@@ -28,14 +28,20 @@ namespace Modules.GenerationSystem {
                     Vector3 spawnPoint = GetAndRemovePoint();
                     GameObject instantiatedObject = _diContainer.InstantiatePrefab(objectData.Prefab);
                     instantiatedObject.transform.position = spawnPoint;
+                    instantiatedObject.transform.rotation = Quaternion.Euler(new Vector3(0, Random.Range(0, 360), 0));
                 }
             }
         }
 
         private void FilterPoints() {
-            for (int pointIndex = 0; pointIndex < _generationPoints.Count; pointIndex++)
-                if (PointOutOfRange(_generationPoints[pointIndex]))
-                    _generationPoints.RemoveAt(pointIndex);
+            int count = _generationPoints.Count;
+            List<Vector3> filteredPoints = new();
+            for (int pointIndex = 0; pointIndex < count; pointIndex++) {
+                Vector3 point = _generationPoints[pointIndex];
+                if (PointOutOfRange(point) is false)
+                    filteredPoints.Add(point);
+            }
+            _generationPoints = filteredPoints;
         }
 
         private bool PointOutOfRange(Vector3 point) =>
@@ -65,13 +71,5 @@ namespace Modules.GenerationSystem {
             _center = center;
             return this;
         }
-    }
-
-    [CreateAssetMenu(fileName = nameof(RealisticWorldObjectsGeneratorConfig) + "_Default", menuName = "Configurations/GenerationSystem/" + nameof(RealisticWorldObjectsGeneratorConfig))]
-    public class RealisticWorldObjectsGeneratorConfig : ScriptableObject {
-        [field: SerializeField] public List<GenerationObjectData> GenerationObjects { get; private set; }
-        [field: SerializeField] public float MinHeight { get; private set; }
-        [field: SerializeField] public float MaxHeight { get; private set; }
-        [field: SerializeField] public float Range { get; private set; }
     }
 }
