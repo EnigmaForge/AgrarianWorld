@@ -23,7 +23,7 @@ namespace Modules.GenerationSystem.Editor {
         private void GeneratePerlinTexture(RealisticTerrainGenerationConfig config) {
             Random.InitState(0);
 
-            RealisticTerrainGenerator terrainGenerator = new RealisticTerrainGenerator(config);
+            RealisticTerrainGenerator terrainGenerator = new RealisticTerrainGenerator(config, null);
             float[,] heights = terrainGenerator.GenerateHeightsByNoise(RESOLUTION);
             _perlinTexture = CreateTexture(heights, RESOLUTION, RESOLUTION);
         }

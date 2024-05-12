@@ -1,11 +1,15 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Modules.GenerationSystem {
     public class RealisticTerrainGenerator : ITerrainGenerator {
         private readonly RealisticTerrainGenerationConfig _generationConfig;
+        private readonly TerrainSurfacePointsModel _terrainSurfacePointsModel;
 
-        public RealisticTerrainGenerator(RealisticTerrainGenerationConfig realisticTerrainGenerationConfig) =>
+        public RealisticTerrainGenerator(RealisticTerrainGenerationConfig realisticTerrainGenerationConfig, TerrainSurfacePointsModel terrainSurfacePointsModel) {
             _generationConfig = realisticTerrainGenerationConfig;
+            _terrainSurfacePointsModel = terrainSurfacePointsModel;
+        }
 
         public void Generate(int seed) {
             Random.InitState(seed);
@@ -16,6 +20,26 @@ namespace Modules.GenerationSystem {
             terrain.terrainData = GenerateTerrainData();
             if (terrain.TryGetComponent(out TerrainCollider terrainCollider))
                 terrainCollider.terrainData = terrain.terrainData;
+
+            _terrainSurfacePointsModel.SurfaceCenter = terrain.transform.position + terrain.terrainData.size / 2f;
+            _terrainSurfacePointsModel.Points = GetTerrainPoints(terrain);
+        }
+
+        private List<Vector3> GetTerrainPoints(Terrain terrain) {
+            List<Vector3> points = new();
+            
+            TerrainData terrainData = terrain.terrainData;
+            Vector3 terrainSize = terrainData.size;
+            Vector3 terrainPosition = terrain.transform.position;
+
+            for (float x = 0; x < terrainSize.x; x ++) {
+                for (float z = 0; z < terrainSize.z; z ++) {
+                    float y = terrain.SampleHeight(new Vector3(x, 0, z) + terrainPosition);
+                    points.Add(new Vector3(x, y, z) + terrainPosition);
+                }
+            }
+
+            return points;
         }
 
         private TerrainData GenerateTerrainData() {

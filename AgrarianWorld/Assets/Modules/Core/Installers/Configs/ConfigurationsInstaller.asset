@@ -16,3 +16,5 @@ MonoBehaviour:
     type: 2}
   _realisticTerrainGenerationConfig: {fileID: 11400000, guid: ee4aaa67e5a04ba43a5f8c3ad0d11cac,
     type: 2}
+  _realisticWorldObjectsGeneratorConfig: {fileID: 11400000, guid: 80b89d16d59834e44ab0dec76ee58cb0,
+    type: 2}

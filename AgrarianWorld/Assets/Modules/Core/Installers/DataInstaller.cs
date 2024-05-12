@@ -1,4 +1,5 @@
 using Modules.GameMenu;
+using Modules.GenerationSystem;
 using Zenject;
 
 namespace Modules.Core.Installers {
@@ -8,6 +9,9 @@ namespace Modules.Core.Installers {
                      .AsSingle();
 
             Container.Bind<AddWindowInitialValuesModel>()
+                     .AsSingle();
+            
+            Container.Bind<TerrainSurfacePointsModel>()
                      .AsSingle();
         }
     }

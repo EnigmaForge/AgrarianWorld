@@ -1,3 +1,4 @@
+using System.Linq;
 using Modules.GameMenu;
 using Modules.GenerationSystem;
 using UnityEngine;
@@ -23,8 +24,16 @@ namespace Modules.Core.Bootstraps {
             WorldData worldData = worldsListModel.SelectedWorld;
 
             if (worldData is { WorldType: WorldType.Realistic }) {
-                ITerrainGenerator terrainGenerator = _sceneContextInstance.Container.Resolve<ITerrainGenerator>();
+                ITerrainGenerator terrainGenerator = _sceneContextInstance.Container.Resolve<RealisticTerrainGenerator>();
                 terrainGenerator.Generate(worldData.Seed);
+
+                RealisticWorldObjectsGeneratorConfig generationObjectsConfig = _sceneContextInstance.Container.Resolve<RealisticWorldObjectsGeneratorConfig>();
+                TerrainSurfacePointsModel terrainSurfacePointsModel = _sceneContextInstance.Container.Resolve<TerrainSurfacePointsModel>();
+                IObjectsOnSurfaceGenerator objectsGenerator = _sceneContextInstance.Container.Resolve<ObjectsOnSurfaceGenerator>();
+                objectsGenerator.SetGenerationPoints(terrainSurfacePointsModel.Points)
+                                .SetGenerationRange(generationObjectsConfig.MinHeight, generationObjectsConfig.MaxHeight, generationObjectsConfig.Range, terrainSurfacePointsModel.SurfaceCenter)
+                                .SetObjects(generationObjectsConfig.GenerationObjects.ToHashSet())
+                                .Generate(worldData.Seed);
             }
         }
     }
