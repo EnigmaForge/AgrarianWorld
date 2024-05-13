@@ -9,6 +9,7 @@ namespace Modules.Core.Installers {
         [SerializeField] private WorldsListConfiguration _worldsListConfiguration;
         [SerializeField] private RealisticTerrainGenerationConfig _realisticTerrainGenerationConfig;
         [SerializeField] private RealisticWorldObjectsGeneratorConfig _realisticWorldObjectsGeneratorConfig;
+        [SerializeField] private HexagonGridGeneratorConfiguration _hexagonGridGeneratorConfiguration;
         
         public override void InstallBindings() {
             Container.Bind<WorldsListConfiguration>()
@@ -21,6 +22,10 @@ namespace Modules.Core.Installers {
             
             Container.Bind<RealisticWorldObjectsGeneratorConfig>()
                      .FromInstance(_realisticWorldObjectsGeneratorConfig)
+                     .AsSingle();
+            
+            Container.Bind<HexagonGridGeneratorConfiguration>()
+                     .FromInstance(_hexagonGridGeneratorConfiguration)
                      .AsSingle();
         }
     }

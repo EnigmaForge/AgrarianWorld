@@ -18,3 +18,5 @@ MonoBehaviour:
     type: 2}
   _realisticWorldObjectsGeneratorConfig: {fileID: 11400000, guid: 80b89d16d59834e44ab0dec76ee58cb0,
     type: 2}
+  _hexagonGridGeneratorConfiguration: {fileID: 11400000, guid: a6d348f42be25bc4bb114bc09021b4e0,
+    type: 2}

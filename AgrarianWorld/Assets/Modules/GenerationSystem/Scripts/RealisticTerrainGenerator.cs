@@ -101,6 +101,16 @@ namespace Modules.GenerationSystem {
             return maxNoiseHeight;
         }
 
+        private void NormalizeHeights(float maxNoiseHeight, float minNoiseHeight, int resolution, float[,] heights) {
+            if (maxNoiseHeight != minNoiseHeight) {
+                for (int x = 0; x < resolution; x++) {
+                    for (int y = 0; y < resolution; y++) {
+                        heights[x, y] = Mathf.InverseLerp(minNoiseHeight, maxNoiseHeight, heights[x, y]);
+                    }
+                }
+            }
+        }
+
         private void AddVignette(int resolution, float[,] heights) {
             float center = resolution / 2f;
             float maxDistance = Mathf.Sqrt(center * center + center * center);
@@ -111,16 +121,6 @@ namespace Modules.GenerationSystem {
                     float normalizedDistance = distanceToCenter / maxDistance;
                     float vignetteFactor = Mathf.Clamp01(1 - normalizedDistance * _generationConfig.VignetteIntensity);
                     heights[x, y] *= vignetteFactor;
-                }
-            }
-        }
-
-        private void NormalizeHeights(float maxNoiseHeight, float minNoiseHeight, int resolution, float[,] heights) {
-            if (maxNoiseHeight != minNoiseHeight) {
-                for (int x = 0; x < resolution; x++) {
-                    for (int y = 0; y < resolution; y++) {
-                        heights[x, y] = Mathf.InverseLerp(minNoiseHeight, maxNoiseHeight, heights[x, y]);
-                    }
                 }
             }
         }
