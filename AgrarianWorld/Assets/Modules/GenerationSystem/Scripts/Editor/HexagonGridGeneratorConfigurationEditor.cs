@@ -24,7 +24,7 @@ namespace Modules.GenerationSystem.Editor {
             Random.InitState(0);
 
             HexagonGridGenerator generator = new HexagonGridGenerator(config);
-            float[,] heights = generator.GenerateHeights(config.MapSize, config.NoiseScale, config.Octaves, config.Lacunarity, config.Persistence, config.VignetteIntensity);
+            float[,] heights = generator.GenerateHeights(config.MapSize, config.NoiseScale, config.Octaves, config.Lacunarity, config.Persistence, config.VignetteIntensity, config.Smoothness, config.Seed);
             _perlinTexture = CreateTexture(heights, config.MapSize.x, config.MapSize.y);
         }
 
