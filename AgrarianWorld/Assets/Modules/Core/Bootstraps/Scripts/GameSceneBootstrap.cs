@@ -24,8 +24,8 @@ namespace Modules.Core.Bootstraps {
             WorldData worldData = worldsListModel.SelectedWorld;
 
             if (worldData is { WorldType: WorldType.Default }) {
-                IHexagonGridGenerator hexagonGridGenerator = _sceneContextInstance.Container.Resolve<HexagonGridGenerator>();
-                hexagonGridGenerator.Generate(worldData.Seed);
+                IHexagonWorldGenerator hexagonWorldGenerator = _sceneContextInstance.Container.Resolve<HexagonWorldGenerator>();
+                hexagonWorldGenerator.Generate(worldData.Seed);
             }
             else if (worldData is { WorldType: WorldType.Realistic }) {
                 ITerrainGenerator terrainGenerator = _sceneContextInstance.Container.Resolve<RealisticTerrainGenerator>();

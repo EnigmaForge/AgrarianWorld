@@ -9,7 +9,7 @@ namespace Modules.GenerationSystem.Installers {
             Container.BindInterfacesAndSelfTo<ObjectsOnSurfaceGenerator>()
                      .AsSingle();
             
-            Container.BindInterfacesAndSelfTo<HexagonGridGenerator>()
+            Container.BindInterfacesAndSelfTo<HexagonWorldGenerator>()
                      .AsSingle();
         }
     }

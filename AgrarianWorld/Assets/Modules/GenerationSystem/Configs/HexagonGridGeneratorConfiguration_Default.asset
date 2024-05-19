@@ -12,26 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f08d1ca0b0464c90ece0759bcb5404, type: 3}
   m_Name: HexagonGridGeneratorConfiguration_Default
   m_EditorClassIdentifier: 
-  <Seed>k__BackingField: 0
   <MapSize>k__BackingField: {x: 128, y: 128}
-  <NoiseScale>k__BackingField: 5
-  <Octaves>k__BackingField: 3
-  <Lacunarity>k__BackingField: 4
-  <Persistence>k__BackingField: 0.35
-  <VignetteIntensity>k__BackingField: 1.5
-  <Smoothness>k__BackingField: 0.3
+  <BiomeSize>k__BackingField: 10
+  <NoiseScale>k__BackingField: 0.1
+  <NoiseStrength>k__BackingField: 10
+  <WaterOffset>k__BackingField: 2
   <HexagonGridPrefab>k__BackingField: {fileID: 8566771137838466485, guid: 77e138077d060884d9a31ac49f0647b3,
     type: 3}
-  <Tiles>k__BackingField:
-  - <TileType>k__BackingField: 0
+  <Biomes>k__BackingField:
+  - <BiomeType>k__BackingField: 0
     <TilePrefab>k__BackingField: {fileID: 2622972151274996266, guid: 7205711e67f2d084d99d53edc4ac444d,
       type: 3}
-    <MaxHeight>k__BackingField: 0.4
-  - <TileType>k__BackingField: 2
+    <SpawnChance>k__BackingField: 0.1
+    <Color>k__BackingField: {r: 0.495283, g: 0.72443616, b: 1, a: 1}
+  - <BiomeType>k__BackingField: 3
+    <TilePrefab>k__BackingField: {fileID: 6860619828251840325, guid: b3ec9761a3e669b4baa6d22364c85012,
+      type: 3}
+    <SpawnChance>k__BackingField: 0.1
+    <Color>k__BackingField: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
+  - <BiomeType>k__BackingField: 2
     <TilePrefab>k__BackingField: {fileID: 5346256963625538670, guid: 0753a7c96e5dc6e419161c834fb13949,
       type: 3}
-    <MaxHeight>k__BackingField: 0.45
-  - <TileType>k__BackingField: 1
+    <SpawnChance>k__BackingField: 0.35
+    <Color>k__BackingField: {r: 0.97292936, g: 1, b: 0.49411762, a: 1}
+  - <BiomeType>k__BackingField: 1
     <TilePrefab>k__BackingField: {fileID: 8047942516399785349, guid: c089deb91e1b0764893ec308241d970c,
       type: 3}
-    <MaxHeight>k__BackingField: 1
+    <SpawnChance>k__BackingField: 1
+    <Color>k__BackingField: {r: 0.49912044, g: 0.8773585, b: 0.33521718, a: 1}

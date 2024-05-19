@@ -1,5 +1,5 @@
 namespace Modules.GenerationSystem {
-    public enum TileType {
+    public enum BiomeType {
         Water = 0,
         Grass = 1,
         Sand = 2,
