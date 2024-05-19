@@ -25,18 +25,37 @@ MonoBehaviour:
       type: 3}
     <SpawnChance>k__BackingField: 0.1
     <Color>k__BackingField: {r: 0.495283, g: 0.72443616, b: 1, a: 1}
+    <Decorations>k__BackingField:
+      <DecorationPrefabs>k__BackingField: []
+      <NoiseScale>k__BackingField: 0
   - <BiomeType>k__BackingField: 3
     <TilePrefab>k__BackingField: {fileID: 6860619828251840325, guid: b3ec9761a3e669b4baa6d22364c85012,
       type: 3}
     <SpawnChance>k__BackingField: 0.1
     <Color>k__BackingField: {r: 0.6226415, g: 0.6226415, b: 0.6226415, a: 1}
+    <Decorations>k__BackingField:
+      <DecorationPrefabs>k__BackingField:
+      - {fileID: 3210388165940631451, guid: 97c1226839369a144ada96e662300543, type: 3}
+      - {fileID: 110559294698275342, guid: 45b8a9c8fb81bce43aabebe48e179da4, type: 3}
+      - {fileID: 8230217161402482655, guid: b20ba358ec31a2a4cba2703ad0ef7f33, type: 3}
+      <NoiseScale>k__BackingField: 5
   - <BiomeType>k__BackingField: 2
     <TilePrefab>k__BackingField: {fileID: 5346256963625538670, guid: 0753a7c96e5dc6e419161c834fb13949,
       type: 3}
     <SpawnChance>k__BackingField: 0.35
     <Color>k__BackingField: {r: 0.97292936, g: 1, b: 0.49411762, a: 1}
+    <Decorations>k__BackingField:
+      <DecorationPrefabs>k__BackingField:
+      - {fileID: 2817903066721477671, guid: cc81abe2a26714f4c893ec621c561dc2, type: 3}
+      <NoiseScale>k__BackingField: 3
   - <BiomeType>k__BackingField: 1
     <TilePrefab>k__BackingField: {fileID: 8047942516399785349, guid: c089deb91e1b0764893ec308241d970c,
       type: 3}
     <SpawnChance>k__BackingField: 1
     <Color>k__BackingField: {r: 0.49912044, g: 0.8773585, b: 0.33521718, a: 1}
+    <Decorations>k__BackingField:
+      <DecorationPrefabs>k__BackingField:
+      - {fileID: 2814609686474969516, guid: ca49e1932dea4aa4e96a163963b41bbf, type: 3}
+      - {fileID: 1938136470597454637, guid: 4b2c961e55063ad42bd4a3ff74066c3e, type: 3}
+      - {fileID: 6930492925430578215, guid: b9e8d707bf834364a9ff0dd1bf962cdd, type: 3}
+      <NoiseScale>k__BackingField: 0.15

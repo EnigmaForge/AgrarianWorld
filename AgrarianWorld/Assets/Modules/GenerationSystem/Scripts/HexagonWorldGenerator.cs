@@ -5,7 +5,8 @@ using UnityEngine;
 namespace Modules.GenerationSystem {
     public class HexagonWorldGenerator : IHexagonWorldGenerator {
         private readonly HexagonGridGeneratorConfiguration _generationConfig;
-        
+        private BiomeDataHolder[,] _biomes;
+
         public HexagonWorldGenerator(HexagonGridGeneratorConfiguration generationConfig) =>
             _generationConfig = generationConfig;
         
@@ -17,13 +18,15 @@ namespace Modules.GenerationSystem {
             List<BiomeData> tiles = _generationConfig.Biomes;
             int waterOffset = _generationConfig.WaterOffset;
             GameObject hexagonGridInstance = Object.Instantiate(_generationConfig.HexagonGridPrefab);
-            if (hexagonGridInstance.TryGetComponent(out Grid hexagonGrid))
+            if (hexagonGridInstance.TryGetComponent(out Grid hexagonGrid)) {
                 GenerateTiles(hexagonGrid, mapSize, biomeSize, tiles, waterOffset);
+                GenerateDecorations();
+            }
         }
 
         private void GenerateTiles(Grid hexagonGrid, Vector2Int mapSize, int biomeSize, List<BiomeData> tiles, int waterOffset) {
             Vector2Int cellSize = mapSize / biomeSize;
-            BiomeDataHolder[,] biomes = GenerateBiomesData(cellSize, biomeSize, tiles, waterOffset);
+           _biomes = GenerateBiomesData(cellSize, biomeSize, tiles, waterOffset);
 
             for (int i = 0; i < mapSize.x; i++) {
                 for (int j = 0; j < mapSize.y; j++) {
@@ -31,6 +34,7 @@ namespace Modules.GenerationSystem {
                     int gridY = j / cellSize.y;
                     float nearestDistance = Mathf.Infinity;
                     BiomeData biomeData = default;
+                    Vector2Int biomeCoordinates = new Vector2Int();
 
                     for (int a = -1; a < 2; a++) {
                         for (int b = -1; b < 2; b++) {
@@ -41,18 +45,20 @@ namespace Modules.GenerationSystem {
                                 continue;
 
                             float noise = Mathf.PerlinNoise(i * _generationConfig.NoiseScale, j * _generationConfig.NoiseScale) * _generationConfig.NoiseStrength;
-                            Vector2 center = new Vector2(biomes[x, y].Center.x + noise, biomes[x, y].Center.y + noise);
+                            Vector2 center = new Vector2(_biomes[x, y].Center.x + noise, _biomes[x, y].Center.y + noise);
                             float distance = Vector2.Distance(new Vector2(i, j), center);
 
                             if (distance < nearestDistance) {
                                 nearestDistance = distance;
-                                biomeData = biomes[x, y].BiomeData;
+                                biomeData = _biomes[x, y].BiomeData;
+                                biomeCoordinates.Set(x, y);
                             }
                         }
                     }
 
                     Vector3 position = hexagonGrid.CellToWorld(new Vector3Int(i, j, 0));
                     Object.Instantiate(biomeData!.TilePrefab, position, Quaternion.identity);
+                    _biomes[biomeCoordinates.x, biomeCoordinates.y].TilePositions.Add(position);
                 }
             }
         }
@@ -77,7 +83,39 @@ namespace Modules.GenerationSystem {
 
             return biomeHolders;
         }
-        
+
+        private void GenerateDecorations() {
+            foreach (BiomeDataHolder biomeDataHolder in _biomes) {
+                DecorationsData decorationsData = biomeDataHolder.BiomeData.Decorations;
+                
+                if (decorationsData.DecorationPrefabs is { Count: 0 } )
+                    continue;
+
+                float noiseScale = biomeDataHolder.BiomeData.Decorations.NoiseScale;
+                float factor = 1f / (decorationsData.DecorationPrefabs.Count + 1);
+                
+                foreach (Vector3 position in biomeDataHolder.TilePositions) {
+                    float xCoordinate = position.x * noiseScale;
+                    float yCoordinate = position.z * noiseScale;
+                    float perlinValue = Mathf.PerlinNoise(xCoordinate, yCoordinate);
+
+                    GameObject prefabToSpawn = null;
+                    for (int i = 0; i < decorationsData.DecorationPrefabs.Count; i++) {
+                        if (perlinValue <= factor)
+                            continue;
+                        
+                        if (perlinValue <= factor + factor * (i + 1)) {
+                            prefabToSpawn = decorationsData.DecorationPrefabs[i];
+                            break;
+                        }
+                    }
+
+                    if (prefabToSpawn != null)
+                        Object.Instantiate(prefabToSpawn, position, Quaternion.identity);
+                }
+            }
+        }
+
         #if UNITY_EDITOR
         public Texture2D GenerateVoronoiDiagram(int seed) {
             Random.InitState(seed);
@@ -93,7 +131,7 @@ namespace Modules.GenerationSystem {
                     int gridY = j / cellSize.y;
                     float nearestDistance = Mathf.Infinity;
                     Color color = default;
-
+                    
                     for (int a = -1; a < 2; a++) {
                         for (int b = -1; b < 2; b++) {
                             int x = gridX + a;
@@ -112,7 +150,7 @@ namespace Modules.GenerationSystem {
                             }
                         }
                     }
-
+                    
                     texture.SetPixel(i, j, color);
                 }
             }
@@ -125,10 +163,12 @@ namespace Modules.GenerationSystem {
         private class BiomeDataHolder {
             public BiomeData BiomeData { get; }
             public Vector2Int Center { get; }
+            public List<Vector3> TilePositions { get; }
 
             internal BiomeDataHolder(BiomeData biomeData, Vector2Int center) {
                 BiomeData = biomeData;
                 Center = center;
+                TilePositions = new();
             }
         }
     }
