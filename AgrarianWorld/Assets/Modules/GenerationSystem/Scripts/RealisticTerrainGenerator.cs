@@ -17,7 +17,7 @@ namespace Modules.GenerationSystem {
             Terrain terrain = Object.Instantiate(_generationConfig.TerrainPrefab);
             terrain.heightmapPixelError = 1;
             terrain.materialTemplate = _generationConfig.TerrainMaterial;
-            terrain.terrainData = GenerateTerrainData();
+            terrain.terrainData = GenerateTerrainData(seed);
             if (terrain.TryGetComponent(out TerrainCollider terrainCollider))
                 terrainCollider.terrainData = terrain.terrainData;
 
@@ -42,7 +42,7 @@ namespace Modules.GenerationSystem {
             return points;
         }
 
-        private TerrainData GenerateTerrainData() {
+        private TerrainData GenerateTerrainData(int seed) {
             int resolution = (int)_generationConfig.HeightmapResolution;
             TerrainData terrainData = new TerrainData {
                 name = "Generated Data", 
@@ -50,14 +50,15 @@ namespace Modules.GenerationSystem {
                 size = _generationConfig.TerrainSize,
             };
 
-            float[,] heights = GenerateHeightsByNoise(resolution);
+            float[,] heights = GenerateHeightsByNoise(resolution, seed);
             ApplyErosion((int)_generationConfig.HeightmapResolution, heights);
             terrainData.SetHeights(0, 0, heights);
             
             return terrainData;
         }
 
-        public float[,] GenerateHeightsByNoise(int resolution) {
+        public float[,] GenerateHeightsByNoise(int resolution, int seed) {
+            Random.InitState(seed);
             float scale = _generationConfig.NoiseScale;
             float scaledResolution = resolution * scale;
             float[,] heights = new float[resolution, resolution];
@@ -72,17 +73,19 @@ namespace Modules.GenerationSystem {
         }
 
         private float GenerateNoiseHeights(int resolution, float scaledResolution, float maxNoiseHeight, float[,] heights, ref float minNoiseHeight) {
+            int randomOffset = Random.Range(0, 999999);
             for (int x = 0; x < resolution; x++) {
                 for (int y = 0; y < resolution; y++) {
+                    float xCoordinate = x / scaledResolution;
+                    float yCoordinate = y / scaledResolution;
+                    float noiseHeight = Mathf.PerlinNoise(xCoordinate + randomOffset, yCoordinate + randomOffset);
                     float amplitude = 1;
                     float frequency = 1;
-                    float noiseHeight = 0;
 
                     for (int octave = 0; octave < _generationConfig.Octaves; octave++) {
-                        float xCoordinate = x / scaledResolution * frequency;
-                        float yCoordinate = y / scaledResolution * frequency;
-                        float perlinValue = Mathf.PerlinNoise(xCoordinate, yCoordinate) * 2 - 1;
-                        noiseHeight += perlinValue * amplitude;
+                        xCoordinate = x / scaledResolution * frequency;
+                        yCoordinate = y / scaledResolution * frequency;
+                        noiseHeight += Mathf.PerlinNoise(xCoordinate + randomOffset, yCoordinate + randomOffset) * amplitude;
 
                         amplitude *= _generationConfig.Persistence;
                         frequency *= _generationConfig.Lacunarity;

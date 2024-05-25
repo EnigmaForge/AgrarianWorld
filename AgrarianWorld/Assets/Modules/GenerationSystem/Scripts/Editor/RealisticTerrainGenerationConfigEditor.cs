@@ -5,6 +5,7 @@ namespace Modules.GenerationSystem.Editor {
     [CustomEditor(typeof(RealisticTerrainGenerationConfig))]
     public class RealisticTerrainGenerationConfigEditor : UnityEditor.Editor {
         private const int RESOLUTION = 128;
+        private int _seed;
         private Texture2D _perlinTexture;
 
         public override void OnInspectorGUI() {
@@ -13,18 +14,16 @@ namespace Modules.GenerationSystem.Editor {
             RealisticTerrainGenerationConfig config = (RealisticTerrainGenerationConfig)target;
             EditorGUILayout.Space();
             
-            EditorGUI.BeginDisabledGroup(true);
-
             GeneratePerlinTexture(config);
+            GUILayout.Label("Debug", EditorStyles.boldLabel);
+            _seed = EditorGUILayout.IntSlider("Seed", _seed, 0, 999999);
             GUILayout.Label(_perlinTexture, GUILayout.Width(RESOLUTION), GUILayout.Height(RESOLUTION));
-            
-            EditorGUI.EndDisabledGroup();
         }
         private void GeneratePerlinTexture(RealisticTerrainGenerationConfig config) {
             Random.InitState(0);
 
             RealisticTerrainGenerator terrainGenerator = new RealisticTerrainGenerator(config, null);
-            float[,] heights = terrainGenerator.GenerateHeightsByNoise(RESOLUTION);
+            float[,] heights = terrainGenerator.GenerateHeightsByNoise(RESOLUTION, _seed);
             _perlinTexture = CreateTexture(heights, RESOLUTION, RESOLUTION);
         }
 
