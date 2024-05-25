@@ -46,7 +46,7 @@ namespace Modules.ViewsModule {
         protected override void SetupPresenters() { }
 
         public TPresenter GetPresenter<TPresenter>() where TPresenter : PresenterBase =>
-            Container.GetPresenter<TPresenter>();
+            Container?.GetPresenter<TPresenter>();
 
         public void SetActive(bool value) =>
             gameObject.SetActive(value);

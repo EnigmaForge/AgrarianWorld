@@ -9,12 +9,14 @@ namespace Modules.GameMenu {
         private readonly AddWorldWindow _addWorldWindow;
         private readonly IGameStateMachine _gameStateMachine;
         private readonly WorldsListModel _worldsListModel;
+        private readonly AddWindowInitialValuesModel _addWindowInitialValuesModel;
         private WorldDataHolder _worldDataHolder;
 
-        public AddWorldPopupPresenter(AddWorldWindow addWorldWindow, IGameStateMachine gameStateMachine, WorldsListModel worldsListModel) {
+        public AddWorldPopupPresenter(AddWorldWindow addWorldWindow, IGameStateMachine gameStateMachine, WorldsListModel worldsListModel, AddWindowInitialValuesModel addWindowInitialValuesModel) {
             _addWorldWindow = addWorldWindow;
             _gameStateMachine = gameStateMachine;
             _worldsListModel = worldsListModel;
+            _addWindowInitialValuesModel = addWindowInitialValuesModel;
             _worldDataHolder = new WorldDataHolder();
         }
         
@@ -26,6 +28,7 @@ namespace Modules.GameMenu {
             View.OnChangedWorldType += UpdateWorldType;
 
             InitializeWorldTypesDropdown();
+            SetInitialValues();
         }
 
         private void InitializeWorldTypesDropdown() {
@@ -52,12 +55,13 @@ namespace Modules.GameMenu {
         private void AddNewWorld() {
             WorldData newWorld = new WorldData(_worldDataHolder.WorldName, _worldDataHolder.Seed, _worldDataHolder.WorldType, GetCurrentDay());
             _worldsListModel.AddWorld(newWorld);
+            _worldsListModel.SelectedWorld = newWorld;
         }
 
         private void UpdateWorldName(string worldName) =>
             _worldDataHolder.WorldName = worldName;
 
-        private void UpdateSeed(string seed) =>
+        private void UpdateSeed(int seed) =>
             _worldDataHolder.Seed = seed;
 
         private void UpdateWorldType(string worldType) =>
@@ -65,5 +69,11 @@ namespace Modules.GameMenu {
 
         private string GetCurrentDay() =>
             DateTime.Now.ToString("dd.MM.yyyy");
+
+        public void SetInitialValues() {
+            View.SetWorldName(_addWindowInitialValuesModel.WorldName);
+            View.SetSeedValue(_addWindowInitialValuesModel.Seed);
+            View.SetWorldType((int)_addWindowInitialValuesModel.WorldType);
+        }
     }
 }

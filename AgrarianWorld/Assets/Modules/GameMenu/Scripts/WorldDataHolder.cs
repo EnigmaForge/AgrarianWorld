@@ -1,7 +1,7 @@
 namespace Modules.GameMenu {
     internal struct WorldDataHolder {
         internal string WorldName;
-        internal string Seed;
+        internal int Seed;
         internal WorldType WorldType;
     }
 }
