@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de7dbd94e0244e709b4fef15b958c806, type: 3}
   m_Name: RealisticTerrainGenerationConfig_Default
   m_EditorClassIdentifier: 
-  <HeightmapResolution>k__BackingField: 1024
+  <HeightmapResolution>k__BackingField: 512
   <TerrainSize>k__BackingField: {x: 128, y: 10, z: 128}
   <NoiseScale>k__BackingField: 0.1
   <Octaves>k__BackingField: 3
   <Lacunarity>k__BackingField: 3
-  <Persistence>k__BackingField: 0.15
+  <Persistence>k__BackingField: 0.25
   <ErosionIterations>k__BackingField: 100
   <ErosionStrength>k__BackingField: 0.05
   <VignetteIntensity>k__BackingField: 1.35

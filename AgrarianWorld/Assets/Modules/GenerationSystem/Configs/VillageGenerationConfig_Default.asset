@@ -26,6 +26,12 @@ MonoBehaviour:
   <RoadStraight>k__BackingField: {fileID: 239102834123238132, guid: 668d4bd3ad7bf4346b22c33df33139f8,
     type: 3}
   <Houses>k__BackingField:
-  - {fileID: 4833331166982375223, guid: a1739afcf9eefcc47b0f8ee5a2f4939f, type: 3}
-  - {fileID: 8046134785495599182, guid: a8e09e384bcb87641a4d41d07bafa239, type: 3}
-  - {fileID: 2357272533346852594, guid: ca4a66e3790c92e439e0bfb3cd1682b2, type: 3}
+  - HousePrefab: {fileID: 2357272533346852594, guid: ca4a66e3790c92e439e0bfb3cd1682b2,
+      type: 3}
+    SpawnChance: 0.1
+  - HousePrefab: {fileID: 8046134785495599182, guid: a8e09e384bcb87641a4d41d07bafa239,
+      type: 3}
+    SpawnChance: 0.3
+  - HousePrefab: {fileID: 4833331166982375223, guid: a1739afcf9eefcc47b0f8ee5a2f4939f,
+      type: 3}
+    SpawnChance: 1

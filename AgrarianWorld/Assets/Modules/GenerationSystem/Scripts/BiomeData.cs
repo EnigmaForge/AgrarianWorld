@@ -7,7 +7,6 @@ namespace Modules.GenerationSystem {
         [field: SerializeField] public BiomeType BiomeType { get; private set; }
         [field: SerializeField] public GameObject TilePrefab { get; private set; }
         [field: SerializeField] public float SpawnChance { get; private set; }
-        [field: SerializeField] public Color Color { get; private set; }
         [field: SerializeField] public DecorationsData Decorations { get; private set; }
     }
 }
