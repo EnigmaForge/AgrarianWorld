@@ -1,7 +1,6 @@
 namespace Modules.GameMenu {
     public enum WorldType {
-        Default = 0,
-        Realistic = 1,
-        Voxel = 2
+        Flat = 0,
+        Terrain = 1,
     }
 }

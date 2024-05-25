@@ -42,7 +42,7 @@ MonoBehaviour:
   - <BiomeType>k__BackingField: 2
     <TilePrefab>k__BackingField: {fileID: 5346256963625538670, guid: 0753a7c96e5dc6e419161c834fb13949,
       type: 3}
-    <SpawnChance>k__BackingField: 0.35
+    <SpawnChance>k__BackingField: 0.2
     <Color>k__BackingField: {r: 0.97292936, g: 1, b: 0.49411762, a: 1}
     <Decorations>k__BackingField:
       <DecorationPrefabs>k__BackingField:

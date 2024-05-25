@@ -11,6 +11,9 @@ namespace Modules.GenerationSystem.Installers {
             
             Container.BindInterfacesAndSelfTo<HexagonWorldGenerator>()
                      .AsSingle();
+            
+            Container.BindInterfacesAndSelfTo<LSystemSentenceGenerator>()
+                     .AsSingle();
         }
     }
 }

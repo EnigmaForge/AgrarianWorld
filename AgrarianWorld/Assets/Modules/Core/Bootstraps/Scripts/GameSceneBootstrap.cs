@@ -23,11 +23,11 @@ namespace Modules.Core.Bootstraps {
             WorldsListModel worldsListModel = _sceneContextInstance.Container.Resolve<WorldsListModel>();
             WorldData worldData = worldsListModel.SelectedWorld;
 
-            if (worldData is { WorldType: WorldType.Default }) {
+            if (worldData is { WorldType: WorldType.Flat }) {
                 IHexagonWorldGenerator hexagonWorldGenerator = _sceneContextInstance.Container.Resolve<HexagonWorldGenerator>();
                 hexagonWorldGenerator.Generate(worldData.Seed);
             }
-            else if (worldData is { WorldType: WorldType.Realistic }) {
+            else if (worldData is { WorldType: WorldType.Terrain }) {
                 ITerrainGenerator terrainGenerator = _sceneContextInstance.Container.Resolve<RealisticTerrainGenerator>();
                 terrainGenerator.Generate(worldData.Seed);
 

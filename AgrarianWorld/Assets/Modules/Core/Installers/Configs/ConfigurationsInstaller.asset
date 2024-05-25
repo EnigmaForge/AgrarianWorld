@@ -20,3 +20,5 @@ MonoBehaviour:
     type: 2}
   _hexagonGridGeneratorConfiguration: {fileID: 11400000, guid: a6d348f42be25bc4bb114bc09021b4e0,
     type: 2}
+  _villageGenerationConfig: {fileID: 11400000, guid: e2318346d9b9c00408e965f3a1dbda3e,
+    type: 2}

@@ -13,6 +13,9 @@ namespace Modules.Core.Installers {
             
             Container.Bind<TerrainSurfacePointsModel>()
                      .AsSingle();
+            
+            Container.Bind<VillageGenerationModel>()
+                     .AsSingle();
         }
     }
 }

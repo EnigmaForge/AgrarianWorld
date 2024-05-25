@@ -47,7 +47,7 @@ namespace Modules.GameMenu {
         private void ShowAddWorldPopup() {
             _addWindowInitialValuesModel.WorldName = "New World";
             _addWindowInitialValuesModel.Seed = GetSeed();
-            _addWindowInitialValuesModel.WorldType = WorldType.Default;
+            _addWindowInitialValuesModel.WorldType = WorldType.Flat;
 
             AddWorldPopupPresenter addWorldPopupPresenter = _addWorldWindow.GetPresenter<AddWorldPopupPresenter>();
             addWorldPopupPresenter?.SetInitialValues();
