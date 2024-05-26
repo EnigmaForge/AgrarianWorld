@@ -9,6 +9,7 @@ namespace Modules.Core.Installers {
     public class ProjectContextInstaller : ScriptableObjectInstaller<ProjectContextInstaller> {
         public override void InstallBindings() {
             BindSavingSystem();
+            BindGameUpdaters();
             DataInstaller.Install(Container);
             SceneLoaderInstaller.Install(Container);
             GameStateMachineInstaller.Install(Container);
@@ -16,6 +17,12 @@ namespace Modules.Core.Installers {
 
         private void BindSavingSystem() {
             Container.BindInterfacesTo<DataStorageService>()
+                     .AsSingle();
+        }
+
+        private void BindGameUpdaters() {
+            Container.BindInterfacesTo<GameUpdater.GameUpdater>()
+                     .FromNewComponentOnNewGameObject()
                      .AsSingle();
         }
     }

@@ -12,6 +12,7 @@ namespace Modules.GameMenu {
         [SerializeField] private Image _worldImage;
         [SerializeField] private TMP_Text _worldName;
         [SerializeField] private TMP_Text _lastOpenDate;
+        [SerializeField] private Color _selectedColor;
         private bool _selected;
 
         public event Action OnClickOpenWorldButton;
@@ -36,17 +37,17 @@ namespace Modules.GameMenu {
 
         public void SetSelected(bool selected) {
             _selected = selected;
-            _backgroundImage.enabled = selected;
+            _backgroundImage.color = selected ? _selectedColor : Color.white;
         }
 
         public void OnPointerEnter(PointerEventData eventData) {
             if (!_selected)
-                _backgroundImage.enabled = true;
+                _backgroundImage.color = _selectedColor;
         }
 
         public void OnPointerExit(PointerEventData eventData) {
             if (!_selected)
-                _backgroundImage.enabled = false;
+                _backgroundImage.color = Color.white;
         }
     }
 }

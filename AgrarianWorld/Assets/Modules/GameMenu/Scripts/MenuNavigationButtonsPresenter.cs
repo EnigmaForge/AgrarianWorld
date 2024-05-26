@@ -26,7 +26,14 @@ namespace Modules.GameMenu {
         private void OnClickSettings() =>
             Debug.LogError("NO SETTINGS!");
  
-        private void OnClickQuit() =>
+        private void OnClickQuit() {
+            #if UNITY_EDITOR
+            if (UnityEditor.EditorApplication.isPlaying)
+                UnityEditor.EditorApplication.isPlaying = false;
+            return;
+            #endif
+            
             Application.Quit();
+        }
     }
 }
