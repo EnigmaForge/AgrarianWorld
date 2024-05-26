@@ -1,9 +1,13 @@
+using System;
 using Modules.Core.FiniteStateMachine.GameStateMachine;
+using Modules.Core.Global.Enums;
+using Modules.SavingSystem;
 using Modules.ViewsModule;
-using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Modules.GameMenu {
     public class OpenWorldPresenter : Presenter<OpenWorldView> {
+        private const string WORLDS_LIST_SAVES_KEY = "WorldsList";
         private const int MIN_SEED_VALUE = 0;
         private const int MAX_SEED_VALUE = 999999;
         private readonly OpenWorldWindow _openWorldWindow;
@@ -11,13 +15,16 @@ namespace Modules.GameMenu {
         private readonly IGameStateMachine _gameStateMachine;
         private readonly WorldsListModel _worldsListModel;
         private readonly AddWindowInitialValuesModel _addWindowInitialValuesModel;
+        private readonly IDataStorageService _dataStorageService;
 
-        public OpenWorldPresenter(WorldsListModel worldsListModel, OpenWorldWindow openWorldWindow, AddWorldWindow addWorldWindow, IGameStateMachine gameStateMachine, AddWindowInitialValuesModel addWindowInitialValuesModel) {
+        public OpenWorldPresenter(WorldsListModel worldsListModel, OpenWorldWindow openWorldWindow, AddWorldWindow addWorldWindow, 
+                                  IGameStateMachine gameStateMachine, AddWindowInitialValuesModel addWindowInitialValuesModel, IDataStorageService dataStorageService) {
             _openWorldWindow = openWorldWindow;
             _addWorldWindow = addWorldWindow;
             _gameStateMachine = gameStateMachine;
             _worldsListModel = worldsListModel;
             _addWindowInitialValuesModel = addWindowInitialValuesModel;
+            _dataStorageService = dataStorageService;
         }
         
         public override void Initialize() {
@@ -41,8 +48,16 @@ namespace Modules.GameMenu {
         private void CloseWindow() =>
             _openWorldWindow.SetActive(false);
 
-        private void OpenWorld() =>
+        private void OpenWorld() {
+            WorldData worldData = _worldsListModel.GetWorld(_worldsListModel.SelectedWorld.WorldName);
+            worldData.LastOpenDate = DateTime.Now.ToString("dd.MM.yyyy");
+            WorldsListHolder worldsListHolder = new WorldsListHolder {
+                Worlds = _worldsListModel.GetWorlds()
+            };
+            _dataStorageService.Save(WORLDS_LIST_SAVES_KEY, worldsListHolder, SaveGroups.Worlds.ToString());
+            
             _gameStateMachine.ChangeState<GameState>();
+        }
 
         private void ShowAddWorldPopup() {
             _addWindowInitialValuesModel.WorldName = "New World";
