@@ -55,8 +55,10 @@ namespace Modules.GameMenu {
         }
 
         private void OnChangedSeedInvoke(string newSeed) {
-            if (newSeed.Length > SEED_LENGTH)
-                _seedInputField.text = newSeed[..SEED_LENGTH];
+            if (newSeed.Length > SEED_LENGTH) {
+                newSeed = newSeed[..SEED_LENGTH];
+                _seedInputField.text = newSeed;
+            }
             
             bool isNumber = int.TryParse(newSeed, out int intValue);
             SetAddButtonInteractable(newSeed.Length == SEED_LENGTH && isNumber);

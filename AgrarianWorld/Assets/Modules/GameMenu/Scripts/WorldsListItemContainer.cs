@@ -1,10 +1,11 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using Zenject;
 
 namespace Modules.GameMenu {
-    public class WorldsListItemContainer : IWorldsListItemContainer {
+    public class WorldsListItemContainer : IWorldsListItemContainer, IDisposable {
         private readonly List<WorldItemPresenter> _worldItems = new();
         private WorldsListModel _worldsListModel;
         private WorldsListConfiguration _worldsListConfiguration;
@@ -29,6 +30,11 @@ namespace Modules.GameMenu {
                 presenter.Initialize();
                 _worldItems.Add(presenter);
             }
+        }
+
+        public void Dispose() {
+            foreach (WorldItemPresenter worldItemPresenter in _worldItems)
+                worldItemPresenter.Dispose();
         }
     }
 }

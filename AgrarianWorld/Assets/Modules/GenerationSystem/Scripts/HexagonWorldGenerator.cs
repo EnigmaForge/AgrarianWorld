@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 namespace Modules.GenerationSystem {
-    public class HexagonWorldGenerator : IHexagonWorldGenerator {
+    public class HexagonWorldGenerator : IHexagonWorldGenerator, IDisposable {
         private readonly HexagonGridGeneratorConfiguration _generationConfig;
         private readonly VillageGenerationModel _villageGenerationModel;
         private readonly VillageGenerationConfig _villageGenerationConfig;
@@ -314,6 +317,13 @@ namespace Modules.GenerationSystem {
                         Object.Instantiate(prefabToSpawn, position, Quaternion.identity);
                 }
             }
+        }
+
+        public void Dispose() {
+            _villageGenerationModel.Sentence = string.Empty;
+            _villageGenerationModel.VillageCenter = Vector3.zero;
+            _villageGenerationModel.RoadPositions.Clear();
+            _villageGenerationModel.HousePositions.Clear();
         }
 
         private class BiomeDataHolder {

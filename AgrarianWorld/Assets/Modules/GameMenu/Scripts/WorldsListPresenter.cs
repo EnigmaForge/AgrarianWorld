@@ -23,8 +23,10 @@ namespace Modules.GameMenu {
         private void InitializeWorldsList() {
             WorldsListHolder worldsListHolder = _dataStorageService.Load<WorldsListHolder>(WORLDS_LIST_SAVES_KEY, SaveGroups.Worlds.ToString());
             
-            foreach (WorldData worldData in worldsListHolder.Worlds)
-                _worldsListModel.AddWorld(worldData);
+            foreach (WorldData worldData in worldsListHolder.Worlds) {
+                if(_worldsListModel.GetWorld(worldData.WorldName) == null)
+                    _worldsListModel.AddWorld(worldData);
+            }
 
             UpdateWorldsList();
         }

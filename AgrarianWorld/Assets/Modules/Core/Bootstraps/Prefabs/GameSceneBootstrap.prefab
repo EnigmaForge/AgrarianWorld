@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sceneContext: {fileID: 544142750828421589, guid: 93324ed6debe8134f82019046deba66b,
     type: 3}
+  _pauseMenuWindow: {fileID: 5320618313982249760, guid: 5f0345ff0b28ba04db1612b6c876d445,
+    type: 3}

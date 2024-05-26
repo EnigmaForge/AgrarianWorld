@@ -25,8 +25,12 @@ namespace Modules.GameMenu {
 
         public override void Dispose() {
             _worldsListModel.OnSelectedWorldChanged -= ChangeSelection;
+            if (View == null)
+                return;
+            
             View.OnClickOpenWorldButton -= SelectWorld;
-            Object.Destroy(View.gameObject);
+            if (View.gameObject != null)
+                Object.Destroy(View.gameObject);
         }
 
         private void SelectWorld() =>

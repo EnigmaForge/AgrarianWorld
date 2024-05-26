@@ -11,6 +11,7 @@ namespace Modules.Core.Bootstraps {
 
         private void Start() {
             InitializeContext();
+            InitializeWindows();
             GenerateWorld();
         }
 
@@ -39,6 +40,11 @@ namespace Modules.Core.Bootstraps {
                                 .SetObjects(generationObjectsConfig.GenerationObjects.ToHashSet())
                                 .Generate(worldData.Seed);
             }
+        }
+        
+        private void InitializeWindows() {
+            PauseMenuWindow pauseMenuWindow = _sceneContextInstance.Container.Resolve<PauseMenuWindow>();
+            pauseMenuWindow.SetActive(false);
         }
     }
 }
